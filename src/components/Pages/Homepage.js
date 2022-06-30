@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import HomepagePopular from '../Homepage/HomepagePopular'
-import HomepagePopularPeople from '../Homepage/HomepagePopularPeople'
-import HomepagePopularFilms from '../Homepage/HomepagePopularFilms'
 import HomepageList from '../Homepage/HomepageList'
+import HomepagePopular from '../Homepage/HomepagePopular'
+import HomepagePopularFilms from '../Homepage/HomepagePopularFilms'
+import HomepagePopularPeople from '../Homepage/HomepagePopularPeople'
 const Homepage = ({ config, genres, filmList }) => {
   return (
     <>
@@ -12,21 +11,21 @@ const Homepage = ({ config, genres, filmList }) => {
         <>
           <HomepagePopularFilms
             config={config}
-            title='Trending this Week'
+            title="Trending this Week"
             timeframe={'week'}
             swiperClass={'trending-week-swiper'}
             filmList={filmList}
           />
           <HomepagePopularFilms
             config={config}
-            title='Trending Today'
+            title="Trending Today"
             timeframe={'day'}
             swiperClass={'trending-day-swiper'}
             filmList={filmList}
           />
           <HomepageList
             config={config}
-            title='From Your List'
+            title="From Your List"
             swiperClass={'your-list-swiper'}
             filmList={filmList}
           />
