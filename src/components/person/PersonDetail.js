@@ -5,10 +5,15 @@ const PersonDetail = ({ person, config }) => {
     <section className="person-detail">
       <div className="person-detail__inner">
         <div className="person-detail__image">
-          <img
-            src={`${config.images.base_url}${config.images.profile_sizes[3]}${person.profile_path}`}
-            alt={`film poster for ${person.name}`}
-          />
+          {person.profile_path ? (
+            <img
+              src={`${config.images.base_url}${config.images.profile_sizes[3]}${person.profile_path}`}
+              alt={`film poster for ${person.name}`}
+            />
+          ) : (
+            <h2>No Image Available</h2>
+          )}
+
           <div className="person-detail__image--details">
             {person.birthday && (
               <div className="person-detail__image--details--stars">

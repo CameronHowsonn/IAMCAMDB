@@ -58,9 +58,6 @@ const HomepagePopularPeople = ({ config }) => {
                 <SwiperSlide key={`person--${index}`}>
                   <Link to={`person/${person.id}`}>
                     <div className="objFit homepage__popular-people-person">
-                      <div className="homepage__popular-people-person-details">
-                        {person.name && <h4>{person.name}</h4>}
-                      </div>
                       <div className="homepage__popular-people-person-image-container">
                         <img
                           className="homepage__popular-people-person-image"
@@ -68,6 +65,9 @@ const HomepagePopularPeople = ({ config }) => {
                           alt={`${person.name}`}
                           loading="lazy"
                         />
+                      </div>
+                      <div className="homepage__popular-people-person-details">
+                        {person.name && <h4>{person.name}</h4>}
                       </div>
                     </div>
                   </Link>

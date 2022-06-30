@@ -9,13 +9,15 @@ const PersonHero = ({ config, id }) => {
   }, [id])
 
   return (
-    <section className={`person-hero`}>
+    <section className={`person-hero ${image ? 'image' : 'no-image'}`}>
       <div className="person-hero__bg objFit">
-        {image && (
+        {image ? (
           <img
             src={`${config.images.base_url}${config.images.profile_sizes[3]}${image.file_path}`}
             alt={`film poster for ${id}`}
           />
+        ) : (
+          <h1>No Image Available</h1>
         )}
       </div>
     </section>

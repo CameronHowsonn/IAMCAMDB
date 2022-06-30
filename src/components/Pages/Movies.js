@@ -20,7 +20,7 @@ const Movie = ({ config, filmList, genres }) => {
   }, [id])
 
   return (
-    <div>
+    <div class={`${film.poster_path ? 'image' : 'no-image'}`}>
       <MovieHero
         path={film.backdrop_path}
         config={config}

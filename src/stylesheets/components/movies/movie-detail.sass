@@ -49,6 +49,12 @@
       top: -30%
       width: 80%
 
+      aspect-ratio: 400 / 250
+
+      .no-image &
+        @media (min-width: $desktop)
+          top: 0
+
     &--details
       align-items: center
       display: flex
@@ -58,6 +64,9 @@
       position: relative
       text-align: center
       top: -25%
+      .no-image &
+        @media (min-width: $desktop)
+          top: 0
 
       &--money
         +guttersTop

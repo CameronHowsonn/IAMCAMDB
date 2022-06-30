@@ -4,6 +4,11 @@
   @media (min-width: $desktop)
     margin-top: -7.5em
 
+  .no-image &
+    @media (min-width: $desktop)
+      +guttersTopDouble
+      margin-top: 0
+
   &__title
     +bigText
     align-items: center

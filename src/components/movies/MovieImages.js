@@ -21,33 +21,39 @@ const MovieImages = ({ id, config }) => {
           <h1 className="movie-images__title big-text">Images</h1>
           <div className="movie-images__scrollbar"></div>
         </header>
-        <Swiper
-          modules={[Navigation, Scrollbar]}
-          slidesPerView={mobileCheck ? 1.25 : 2.75}
-          spaceBetween={20}
-          draggable={false}
-          centeredSlides={false}
-          allowTouchMove={false}
-          loop={false}
-          scrollbar={{
-            el: '.movie-images__scrollbar',
-            hide: false,
-            draggable: true,
-            dragSize: '50vw',
-            snapOnRelease: true,
-          }}
-        >
-          {images.map((image, index) => (
-            <SwiperSlide key={`${index}-${image.file_path}`}>
-              <img
-                className="movie-images__image"
-                src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${image.file_path}`}
-                alt={image.file_path}
-                loading="lazy"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {images.length > 0 ? (
+          <Swiper
+            modules={[Navigation, Scrollbar]}
+            slidesPerView={mobileCheck ? 1.25 : 2.75}
+            spaceBetween={20}
+            draggable={false}
+            centeredSlides={false}
+            allowTouchMove={false}
+            loop={false}
+            scrollbar={{
+              el: '.movie-images__scrollbar',
+              hide: false,
+              draggable: true,
+              dragSize: '50vw',
+              snapOnRelease: true,
+            }}
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={`${index}-${image.file_path}`}>
+                <img
+                  className="movie-images__image"
+                  src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${image.file_path}`}
+                  alt={image.file_path}
+                  loading="lazy"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <h1 className={`${images.length > 0 ? 'images' : 'no-image-title'}`}>
+            No Images Available
+          </h1>
+        )}
       </div>
     </section>
   )

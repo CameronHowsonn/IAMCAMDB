@@ -4,11 +4,19 @@ const MovieDetail = ({ film, config, genres }) => {
   return (
     <section className="movie-detail">
       <div className="movie-detail__inner">
-        <div className="movie-detail__image">
-          <img
-            src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
-            alt={`film poster for ${film.original_title}`}
-          />
+        <div
+          className={`movie-detail__image ${
+            film.poster_path ? 'image' : 'no-image'
+          }`}
+        >
+          {film.poster_path ? (
+            <img
+              src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
+              alt={`film poster for ${film.original_title}`}
+            />
+          ) : (
+            <h2>No Image Available</h2>
+          )}
           <div className="movie-detail__image--details">
             {film.vote_average > 0 && (
               <div className="movie-detail__image--details--stars">
