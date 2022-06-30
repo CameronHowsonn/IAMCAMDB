@@ -67,7 +67,6 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
               filmData.length > 0 &&
               filmData.map((film, index) => {
                 const isInList = filmList.includes(film.id)
-                console.log(isInList)
                 return (
                   <SwiperSlide key={`movie--${index}`}>
                     <Film film={film} config={config} isInList={isInList} />

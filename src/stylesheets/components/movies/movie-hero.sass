@@ -1,4 +1,12 @@
 .movie-hero
+  &.no-image
+    height: 100vh
+    @media (min-width: $desktop)
+      height: 75vh
+    .movie-hero__bg
+      align-items: center
+      display: flex
+      justify-content: center
 
   &__bg
     +cover

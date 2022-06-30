@@ -9,11 +9,8 @@ const Person = ({ config }) => {
   const [person, setPerson] = useState(null)
 
   useEffect(() => {
-    async function getData() {
-      const data = await getPersonById(id)
-      setPerson(data)
-    }
-    getData()
+    getPersonById(id).then(data => setPerson(data))
+    console.log(person)
   }, [id])
 
   return (
@@ -22,7 +19,7 @@ const Person = ({ config }) => {
         {config && person && (
           <img
             className="homepage__popular-image"
-            src={`${config.images.base_url}${config.images.profile_sizes[2]}${person.profile_path}`}
+            src={`${config.images.base_url}${config.images.profile_sizes[3]}${person.profile_path}`}
             alt={`${person.title}`}
           />
         )}

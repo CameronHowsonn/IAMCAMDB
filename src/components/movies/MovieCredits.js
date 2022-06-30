@@ -39,7 +39,10 @@ const MovieCredits = ({ config, id }) => {
           {credits.length > index && (
             <li className={`movie-credits__item`}>
               {currentCredits.length === index && (
-                <h4 onClick={() => setIndex(oldIndex => oldIndex + 11)}>
+                <h4
+                  class="movie-credits__show-more"
+                  onClick={() => setIndex(oldIndex => oldIndex + 11)}
+                >
                   Show More
                 </h4>
               )}

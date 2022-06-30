@@ -23,7 +23,7 @@ const MovieImages = ({ id, config }) => {
         </header>
         <Swiper
           modules={[Navigation, Scrollbar]}
-          slidesPerView={mobileCheck ? 1.25 : 6.75}
+          slidesPerView={mobileCheck ? 1.25 : 2.75}
           spaceBetween={20}
           draggable={false}
           centeredSlides={false}
@@ -42,7 +42,7 @@ const MovieImages = ({ id, config }) => {
               <img
                 key={`${index}-${image.file_path}`}
                 className="movie-images__image"
-                src={`${config.images.base_url}${config.images.backdrop_sizes[1]}${image.file_path}`}
+                src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${image.file_path}`}
                 alt={image.file_path}
                 loading="lazy"
               />

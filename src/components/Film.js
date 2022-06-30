@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { addFilm, removeFilm } from './helpers/localStorage.js'
 
 const Film = ({ film, config, isInList }) => {
-  console.log(isInList)
-
   if (!film.poster_path) {
     return false
   }

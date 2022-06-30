@@ -13,7 +13,6 @@ const Movie = ({ config, filmList, genres }) => {
     const getData = async () => {
       const film = await getFilmById(id)
       setFilm(film)
-      console.log(film)
       return film
     }
 
