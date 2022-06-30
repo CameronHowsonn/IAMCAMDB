@@ -18,11 +18,6 @@ export const FullscreenMenu = ({ data, position, colorIcon, header }) => {
     })
   }, [])
 
-  const addPaddingToMain = useCallback(() => {
-    const main = document.querySelector('main')
-    main.style.paddingTop = header.current.offsetHeight + 'px'
-  }, [header])
-
   useEffect(() => {
     if (open) {
       document.body.classList.add('open--nav')
@@ -34,11 +29,10 @@ export const FullscreenMenu = ({ data, position, colorIcon, header }) => {
   useEffect(() => {
     document.body.classList.add('navigation--active')
     window.addEventListener('scroll', handleScroll)
-    // addPaddingToMain()
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [addPaddingToMain, handleScroll])
+  }, [handleScroll])
 
   return (
     <MenuBurger
