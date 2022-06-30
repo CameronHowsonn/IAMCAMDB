@@ -33,7 +33,7 @@ const HomepagePopularFilms = ({
     <div className="homepage__popular-people">
       <div className="homepage__popular-people__inner">
         <div className="homepage__popular-people-controls">
-          <h1>{title}</h1>
+          <h1 className="big-text">{title}</h1>
           <div className={swiperClass}></div>
         </div>
         <Swiper

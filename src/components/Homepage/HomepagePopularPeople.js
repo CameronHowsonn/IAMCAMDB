@@ -28,7 +28,7 @@ const HomepagePopularPeople = ({ config }) => {
     <div className="homepage__popular-people">
       <div className="homepage__popular-people__inner">
         <div className="homepage__popular-people-controls">
-          <h1>Popular Actors</h1>
+          <h1 className="big-text">Popular Actors</h1>
           <div className="swiper-scrollbar1"></div>
         </div>
         <Swiper
