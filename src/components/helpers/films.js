@@ -20,3 +20,10 @@ export async function getFilmCredits(id) {
   console.log(data)
   return data
 }
+export async function getFilmImages(id) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`
+  )
+  const data = await response.json()
+  return data
+}

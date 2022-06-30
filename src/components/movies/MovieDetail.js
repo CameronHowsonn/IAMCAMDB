@@ -61,7 +61,7 @@ const MovieDetail = ({ film, config, genres }) => {
               </p>
             </div>
             <div className="movie-detail__info-details-item">
-              <p className="movie-detail__info-details-item-value film-tags">
+              <span className="movie-detail__info-details-item-value film-tags">
                 {film.genres &&
                   film.genres.map((genre, index) => {
                     return (
@@ -75,7 +75,7 @@ const MovieDetail = ({ film, config, genres }) => {
                       </span>
                     )
                   })}
-              </p>
+              </span>
             </div>
           </div>
           <p className="movie-detail__description">{film.overview}</p>
