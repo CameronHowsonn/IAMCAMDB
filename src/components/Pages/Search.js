@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { search } from '../helpers/search.js'
@@ -10,8 +10,12 @@ const Search = ({ config, filmList }) => {
   const [page, setPage] = useState(1)
   const [results, setResults] = useState([])
   const [totalPages, setTotalPages] = useState(1)
+  const header = useRef()
 
   useLayoutEffect(() => {
+    if (page > 1) {
+      document.body.scrollIntoView({ block: 'start', behavior: 'auto' })
+    }
     const getSearch = async () => {
       const data = await search(searchTerm, page)
       setResults(data.results)
@@ -23,7 +27,9 @@ const Search = ({ config, filmList }) => {
 
   return (
     <section className="search">
-      <SearchHeader term={searchTerm} />
+      <div className="search-header-container" ref={header}>
+        <SearchHeader term={searchTerm} />
+      </div>
       <SearchResults
         results={results}
         totalPages={totalPages}
@@ -37,7 +43,6 @@ const Search = ({ config, filmList }) => {
             className="search__pagination__button button prev"
             onClick={() => {
               setPage(page - 1)
-              return false
             }}
             disabled={page === 1}
           >
@@ -48,7 +53,6 @@ const Search = ({ config, filmList }) => {
             className="search__pagination__button button next"
             onClick={() => {
               setPage(page + 1)
-              return false
             }}
             disabled={page === totalPages}
           >
