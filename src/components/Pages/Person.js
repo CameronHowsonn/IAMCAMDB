@@ -17,7 +17,7 @@ const Person = ({ config }) => {
     <div className="person container">
       <PersonHero config={config} id={id} />
       {person && <PersonDetail person={person} config={config} />}
-      <PersonFilms id={id} />
+      <PersonFilms id={id} config={config} />
     </div>
   )
 }

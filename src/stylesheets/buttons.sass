@@ -32,15 +32,15 @@
 
 .button
   @extend %button
+  &__icon
+    padding-right: 0.5em
+    position: relative
+    top: 0.125em
+    svg
+      transition: all 0.3s ease-in-out
 
   &--add
     @extend %buttonAdd
-    .add-list-button__icon
-      padding-right: 0.5em
-      position: relative
-      top: 0.125em
-      svg
-        transition: all 0.3s ease-in-out
 
   &--yellow
     @extend %buttonYellow

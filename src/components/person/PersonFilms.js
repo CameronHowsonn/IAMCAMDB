@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import LinkButton from '../Buttons/LinkButton.js'
 import { getMoviesFromPerson } from '../helpers/person.js'
 
-const PersonFilms = ({ id }) => {
+const PersonFilms = ({ id, config }) => {
   const [movies, setMovies] = useState(null)
   const [moviesShown, setMoviesShown] = useState(10)
 
   useEffect(() => {
     getMoviesFromPerson(id).then(data => setMovies(data))
+    console.log(movies)
   }, [id])
 
   const showMoreMovies = useCallback(() => {
@@ -17,15 +19,18 @@ const PersonFilms = ({ id }) => {
     <div>
       {movies && (
         <div className="person__films">
-          <h3>Movies</h3>
+          <h3 className="person__films--title">Movies</h3>
           {movies.cast
             .map(movie => (
               <div key={movie.id} className="person__films--single">
                 <Link to={`/movie/${movie.id}`}>
-                  {movie.title.split(' ').splice(0, 5).join(' ')}
-                  {movie.title.split(' ').splice(0, 3).length > 5 && '...'}
+                  <p>
+                    {movie.title.split(' ').splice(0, 5).join(' ')}
+                    {movie.title.split(' ').splice(0, 3).length > 5 && '...'}
+                    {movie.character && <span>{movie.character}</span>}
+                  </p>
                 </Link>
-                <p>
+                <p className="person__film--single-date">
                   {' '}
                   {new Date(movie.release_date)
                     .toUTCString()
@@ -37,7 +42,13 @@ const PersonFilms = ({ id }) => {
             ))
             .splice(0, moviesShown)}
           {movies.cast.length > moviesShown && (
-            <p onClick={showMoreMovies}>Show More</p>
+            <div onClick={showMoreMovies}>
+              <LinkButton
+                text="Show More"
+                icon={'plus'}
+                buttonStyle={'yellow'}
+              />
+            </div>
           )}
         </div>
       )}
