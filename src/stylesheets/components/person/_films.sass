@@ -2,6 +2,12 @@
   +guttersDouble
   +guttersBottomDouble
 
+  &--header
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
   button
     margin-left: auto
     margin-top: 1em
@@ -17,16 +23,26 @@
     margin-bottom: 0.75em
 
     > a
+      align-items: center
       color: inherit
+      display: flex
+      flex-wrap: wrap
       text-decoration: none
 
       p
-        &:not(span)
-          +yellowHover
-      p
+        +yellowHover
         display: flex
         flex-wrap: wrap
         span
           +smallText
           flex: 0 0 100%
           opacity: 0.5
+
+    &-star
+      align-items: center
+      display: flex
+      flex: 0 0 fit-content
+      justify-content: center
+      margin-right: 1em
+      svg
+        margin-right: 0.5em

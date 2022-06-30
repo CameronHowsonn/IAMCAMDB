@@ -1,28 +1,75 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import LinkButton from '../Buttons/LinkButton.js'
 import { getMoviesFromPerson } from '../helpers/person.js'
 
 const PersonFilms = ({ id, config }) => {
-  const [movies, setMovies] = useState(null)
+  const [movies, setMovies] = useState([
+    {
+      cast: [],
+    },
+  ])
   const [moviesShown, setMoviesShown] = useState(10)
+  const [sortBy, setSortBy] = useState('release_date')
 
   useEffect(() => {
     getMoviesFromPerson(id).then(data => setMovies(data))
   }, [id])
 
   const showMoreMovies = useCallback(() => {
-    setMoviesShown(moviesShown + 10)
-  }, [moviesShown])
+    setMoviesShown(prevMoviesShown => prevMoviesShown + 10)
+  }, [])
+
+  const sortedMovies = useMemo(() => {
+    return [...(movies.cast ?? [])]
+      .sort((a, b) => {
+        if (sortBy === 'release_date') {
+          return new Date(b.release_date) - new Date(a.release_date)
+        }
+        if (sortBy === 'vote_average') {
+          return b.vote_average - a.vote_average
+        }
+        if (sortBy === 'title') {
+          return a.title.localeCompare(b.title)
+        }
+        return a
+      })
+      .splice(0, moviesShown)
+  }, [sortBy, movies, moviesShown])
+
   return (
     <div>
       {movies && (
         <div className="person__films">
-          <h3 className="person__films--title">Movies</h3>
-          {movies.cast
-            .map(movie => (
+          <header className="person__films--header">
+            <h3 className="person__films--title">Movies</h3>
+            <select
+              name="sort-by"
+              id="sort-by"
+              onChange={e => {
+                setSortBy(e.target.value)
+              }}
+            >
+              <option value="release_date">Release Date</option>
+              <option value="title">Title</option>
+              <option value="popularity">Popularity</option>
+            </select>
+          </header>
+          {sortedMovies.map(movie => {
+            if (!isNaN(movie.release_date)) {
+              return false
+            }
+
+            return (
               <div key={movie.id} className="person__films--single">
                 <Link to={`/movie/${movie.id}`}>
+                  {movie.vote_average > 0 && (
+                    <p className="person__films--single-star">
+                      <FaStar />
+                      {movie.vote_average.toFixed(1)}
+                    </p>
+                  )}
                   <p>
                     {movie.title.split(' ').splice(0, 5).join(' ')}
                     {movie.title.split(' ').splice(0, 3).length > 5 && '...'}
@@ -38,14 +85,14 @@ const PersonFilms = ({ id, config }) => {
                     .join(' ')}
                 </p>
               </div>
-            ))
-            .splice(0, moviesShown)}
+            )
+          })}
           <div onClick={showMoreMovies}>
             <LinkButton
               text="Show More"
               icon={'plus'}
               buttonStyle={'yellow'}
-              disabled={movies.cast.length <= moviesShown}
+              disabled={movies.length <= moviesShown}
             />
           </div>
         </div>
