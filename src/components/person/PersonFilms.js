@@ -9,7 +9,6 @@ const PersonFilms = ({ id, config }) => {
 
   useEffect(() => {
     getMoviesFromPerson(id).then(data => setMovies(data))
-    console.log(movies)
   }, [id])
 
   const showMoreMovies = useCallback(() => {
@@ -41,15 +40,14 @@ const PersonFilms = ({ id, config }) => {
               </div>
             ))
             .splice(0, moviesShown)}
-          {movies.cast.length > moviesShown && (
-            <div onClick={showMoreMovies}>
-              <LinkButton
-                text="Show More"
-                icon={'plus'}
-                buttonStyle={'yellow'}
-              />
-            </div>
-          )}
+          <div onClick={showMoreMovies}>
+            <LinkButton
+              text="Show More"
+              icon={'plus'}
+              buttonStyle={'yellow'}
+              disabled={movies.cast.length <= moviesShown}
+            />
+          </div>
         </div>
       )}
     </div>
