@@ -1,0 +1,94 @@
+.movie-detail
+  +guttersDouble
+  +guttersTopBottomDouble
+
+  &__description
+    max-width: 80%
+
+  &__inner
+    display: flex
+    flex-wrap: nowrap
+    @media (max-width: $desktop - 1px)
+      flex-wrap: wrap
+
+  &__title
+    +bigText
+    margin-bottom: 0
+
+  h4
+    margin-top: 0
+
+  &__image,
+  &__info
+    flex: 0 0 100%
+
+  &__info
+    @media (max-width: $desktop - 1px)
+      position: relative
+      text-align: center
+      top: 10%
+    @media (min-width: $desktop)
+      flex: 0 0 calc(100% - 33%)
+
+    &-details
+      display: inline-flex
+      justify-content: space-between
+      margin: 1em 0
+      opacity: 0.6
+      width: 75%
+
+  &__image
+    @media (min-width: $desktop)
+      display: flex
+      flex: 0 0 calc(66% - 33%)
+      flex-wrap: wrap
+    img
+      flex: 0 0 80%
+      height: auto
+      position: relative
+      top: -30%
+      width: 80%
+
+    &--details
+      align-items: center
+      display: flex
+      flex: 0 0 80%
+      flex-wrap: wrap
+      justify-content: center
+      position: relative
+      text-align: center
+      top: -25%
+
+      &--money
+        +guttersTop
+        display: flex
+        justify-content: space-between
+        width: 80%
+
+        .budget
+          flex: 0 0 40%
+
+          p
+            opacity: 0.6
+
+      &--stars
+        display: flex
+        flex: 0 0 100%
+        flex-wrap: wrap
+        text-align: center
+
+        .stars-subtitle
+          flex: 0 0 100%
+          margin: 0 0 0.5em 0
+          opacity: 0.6
+
+        .stars-title
+          flex: 0 0 100%
+        .star-container
+          flex: 0 0 100%
+          &.gold-stars
+            svg
+              color: $yellow
+          svg
+            color: $yellow
+            margin: 0 .25em

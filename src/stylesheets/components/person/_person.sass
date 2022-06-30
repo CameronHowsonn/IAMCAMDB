@@ -1,0 +1,21 @@
+.template--person
+  .person
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    @media (min-width: $desktop)
+
+    &__image-featured
+      flex: 0 0 100%
+      @media (min-width: $desktop)
+        flex: 0 0 40%
+        position: sticky
+        top: 2em
+    &__text
+      flex: 0 0 100%
+      @media (min-width: $desktop)
+        flex: 0 0 60%
+        padding-left: 2em
+
+      svg
+        margin-right: 0.5em

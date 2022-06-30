@@ -1,0 +1,37 @@
+.main__content-nav
+    flex: 0 0 100%
+    &-list
+        display: flex
+        flex-wrap: no-wrap
+        gap: 1em
+        list-style: none
+        padding-left: 0
+        &__item
+            flex: 0 0 auto
+            &:not(.active)
+                opacity: 0.5
+
+            &:first-child
+                margin-left: 0
+            &:last-child
+                margin-right: 0
+            &:hover
+                background-color: $grey
+                color: $white
+            &__link
+                color: $grey
+                display: block
+                padding: 1em
+                text-decoration: none
+                transition: all 0.3s ease-in-out
+                &:hover
+                    background-color: $grey
+                    color: $white
+
+.navbar__logo
+    a
+        color: $white
+        text-decoration: none
+        transition: color 0.3s ease-in-out
+        &:hover
+            color: $yellow

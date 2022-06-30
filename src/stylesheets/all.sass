@@ -1,0 +1,94 @@
+.objFit, .objFit img
+    height: 100%
+    overflow: hidden
+    position: relative
+    width: 100%
+
+=cover
+    img
+        object-fit: cover
+        object-position: center
+
+$mobile: 400px
+$medium: 600px
+$tablet: 768px
+$desktop: 1024px
+$largeDesktop: 1400px
+
+=guttersLeft
+    padding-left: 2em
+    @media (min-width: $desktop)
+        padding-left: 3.5em
+
+=guttersLeftDouble
+    padding-left: 3.5em
+    @media (min-width: $desktop)
+        padding-left: 7em
+
+=guttersRight
+    padding-right: 2em
+    @media (min-width: $desktop)
+        padding-right: 3.5em
+
+=guttersRightDouble
+    padding-right: 3.5em
+    @media (min-width: $desktop)
+        padding-right: 7em
+
+=gutters
+    padding-left: 2em
+    padding-right: 2em
+    @media (min-width: $desktop)
+        padding-left: 3.5em
+        padding-right: 3.5em
+
+=guttersDouble
+    padding-left: 4em
+    padding-right: 4em
+    @media (min-width: $desktop)
+        padding-left: 7em
+        padding-right: 7em
+
+=guttersTop
+    margin-top: 1em
+    @media (min-width: $desktop)
+        margin-top: 2em
+
+=guttersTopDouble
+    margin-top: 2em
+    @media (min-width: $desktop)
+        margin-top: 4em
+
+=guttersBottom
+    margin-bottom: 1em
+    @media (min-width: $desktop)
+        margin-bottom: 2em
+
+=guttersBottomDouble
+    margin-bottom: 2em
+    @media (min-width: $desktop)
+        margin-bottom: 4em
+
+=guttersTopBottom
+    margin-bottom: 1em
+    margin-top: 1em
+    @media (min-width: $desktop)
+        margin-bottom: 2em
+        margin-top: 2em
+
+=guttersTopBottomDouble
+    margin-bottom: 2em
+    margin-top: 2em
+    @media (min-width: $desktop)
+        margin-bottom: 4em
+        margin-top: 4em
+
+@import mixins
+@import reset
+@import typograpy
+@import colours
+@import layout
+@import tags
+@import animations
+@import buttons
+@import film

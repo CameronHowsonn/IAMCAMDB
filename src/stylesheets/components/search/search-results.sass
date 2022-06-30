@@ -1,0 +1,16 @@
+.search-results
+  +guttersTopDouble
+
+  &__list
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-evenly
+    list-style-type: none
+    padding: 0
+
+    &__item
+      flex: 0 0 calc(50% - 1em)
+      @media (min-width: $desktop)
+        flex: 0 0 calc((100% / 6) - 2em)
+        margin-bottom: 1em

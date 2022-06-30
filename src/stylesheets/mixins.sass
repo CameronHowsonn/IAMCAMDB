@@ -1,0 +1,39 @@
+=primaryFont
+    font-family: 'Open Sans', sans-serif
+
+=secondaryFont
+    font-family: 'Montserrat', sans-serif
+
+=noButton
+    appearance: none
+    background: none
+    border: none
+    color: inherit
+    cursor: pointer
+    font: inherit
+    outline: inherit
+    padding: 0
+
+=opacityHover
+    opacity: 0.5
+    &:hover
+        opacity: 1
+
+=overlay($opacity: 0.75)
+    &::after
+        background: $black
+        content: ''
+        display: block
+        height: 100%
+        left: 0
+        opacity: $opacity
+        position: absolute
+        top: 0
+        width: 100%
+        z-index: 1
+
+=bigText
+    font-size: 2em
+    line-height: 1em
+    @media (min-width: $desktop)
+        font-size: 2.5em

@@ -1,0 +1,46 @@
+%button
+  +noButton
+  align-items: center
+  background-color: rgba($white, 0.15)
+  display: flex
+  flex-wrap: nowrap
+  gap: 0.5em
+  justify-content: center
+  margin: 0.5em 0
+  overflow: hidden
+  padding: 0.75em 1.25em
+  position: relative
+  text-decoration: none
+  transition: background-color 0.3s ease-in-out
+  &:hover
+    background-color: rgba($white, 0.25)
+
+  &[disabled]
+    cursor: not-allowed
+    opacity: 0.5
+
+%buttonAdd
+  align-items: center
+  display: flex
+  justify-content: center
+
+%buttonYellow
+  background-color: $yellow
+  color: $grey
+  &:hover
+    background-color: rgba($yellow, 0.75)
+
+.button
+  @extend %button
+
+  &--add
+    @extend %buttonAdd
+    .add-list-button__icon
+      padding-right: 0.5em
+      position: relative
+      top: 0.125em
+      svg
+        transition: all 0.3s ease-in-out
+
+  &--yellow
+    @extend %buttonYellow

@@ -1,0 +1,52 @@
+.homepage__hero-search
+  input
+    border: 0
+    border: 1px solid transparent
+    border-radius: 3em
+    height: 3em
+    padding: 0.25em 1em
+    width: 100%
+
+  &__inner
+
+    &--error
+      animation: animateIn 0.5s forwards
+      color: $red
+      padding-left: 1em
+      position: absolute
+      text-align: center
+      top: -2em
+      width: 100%
+
+    &--search
+      position: relative
+      .error &
+        border: 2px solid $red
+        border-radius: 3em
+
+    &--buttons
+      background: $yellow
+      border-radius: 3em
+      height: 100%
+      position: absolute
+      right: 0
+      top: 50%
+      transform: translateY(-50%)
+      transition: background 0.3s ease-in-out
+      width: 3em
+      z-index: 9
+      &:hover
+        background: $grey
+        svg
+          color: $yellow
+      button
+        appearance: none
+        background: none
+        border: 0
+        border-radius: 1em
+        svg
+          left: 50%
+          position: absolute
+          top: 50%
+          transform: translate(-50%, -50%)
+          transition: color 0.3s ease-in-out
