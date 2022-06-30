@@ -34,6 +34,10 @@ const PersonLinks = ({ id }) => {
           return false
         }
 
+        if (!personLinks[key]) {
+          return false
+        }
+
         return (
           <li key={key} className="person-links--item">
             <a
