@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { FaExclamationTriangle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import MobileCheck from './../../hooks/mobile-check'
 import 'swiper/css/scrollbar'
-import { getFilmList } from '../helpers/localStorage'
-import { getFilmById } from '../helpers/films'
-import { FaExclamationTriangle } from 'react-icons/fa'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import Film from '../Film'
+import { getFilmById } from '../helpers/films.js'
+import { getFilmList } from '../helpers/localStorage.js'
+import MobileCheck from './../../hooks/mobile-check'
 
 const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
   const mobileCheck = MobileCheck()
@@ -17,8 +17,8 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
   useEffect(() => {
     const getFilms = async () => {
       getFilmList()
-        .then((list) => Promise.all(list.map((item) => getFilmById(item))))
-        .then((items) => setFilmData(items))
+        .then(list => Promise.all(list.map(item => getFilmById(item))))
+        .then(items => setFilmData(items))
     }
 
     getFilms()
@@ -35,9 +35,9 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
   }
 
   return (
-    <div className='homepage__popular-people'>
-      <div className='homepage__popular-people__inner'>
-        <div className='homepage__popular-people-controls'>
+    <div className="homepage__popular-people">
+      <div className="homepage__popular-people__inner">
+        <div className="homepage__popular-people-controls">
           <h1>{title}</h1>
           <div className={swiperClass}></div>
         </div>
@@ -76,8 +76,8 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
               })}
           </Swiper>
         ) : (
-          <section className='homepage-list'>
-            <div className='homepage-list__inner'>
+          <section className="homepage-list">
+            <div className="homepage-list__inner">
               <FaExclamationTriangle />
               <h2>
                 You don't have any items in your list, head over to{' '}

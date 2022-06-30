@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import SearchHeader from '../Search/Search-header'
-import { search } from '../helpers/search'
-import SearchResults from '../Search/SearchResults'
+import { useLayoutEffect, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa'
+import { useParams } from 'react-router-dom'
+import { search } from '../helpers/search.js'
+import SearchHeader from '../Search/Search-header'
+import SearchResults from '../Search/SearchResults'
 
 const Search = ({ config, filmList }) => {
   let { searchTerm } = useParams()
@@ -22,7 +22,7 @@ const Search = ({ config, filmList }) => {
   }, [page, searchTerm])
 
   return (
-    <section className='search'>
+    <section className="search">
       <SearchHeader term={searchTerm} />
       <SearchResults
         results={results}
@@ -32,9 +32,9 @@ const Search = ({ config, filmList }) => {
       />
 
       {totalPages > 1 ? (
-        <div className='search__pagination'>
+        <div className="search__pagination">
           <button
-            className='search__pagination__button button prev'
+            className="search__pagination__button button prev"
             onClick={() => setPage(page - 1)}
             disabled={page === 1}
           >
@@ -42,7 +42,7 @@ const Search = ({ config, filmList }) => {
             Previous
           </button>
           <button
-            className='search__pagination__button button next'
+            className="search__pagination__button button next"
             onClick={() => setPage(page + 1)}
             disabled={page === totalPages}
           >

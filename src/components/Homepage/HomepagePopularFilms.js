@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import MobileCheck from './../../hooks/mobile-check'
 import 'swiper/css/scrollbar'
-import { getTrendingFilms } from '../helpers/films'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import Film from '../Film'
+import { getTrendingFilms } from '../helpers/films.js'
+import MobileCheck from './../../hooks/mobile-check'
 
 const HomepagePopularFilms = ({
   config,
@@ -31,9 +30,9 @@ const HomepagePopularFilms = ({
   }
 
   return (
-    <div className='homepage__popular-people'>
-      <div className='homepage__popular-people__inner'>
-        <div className='homepage__popular-people-controls'>
+    <div className="homepage__popular-people">
+      <div className="homepage__popular-people__inner">
+        <div className="homepage__popular-people-controls">
           <h1>{title}</h1>
           <div className={swiperClass}></div>
         </div>

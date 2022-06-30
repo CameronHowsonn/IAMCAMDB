@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
-import { getFilmList } from './components/helpers/localStorage'
+import { getFilmList } from './components/helpers/localStorage.js'
 import { FullscreenMenu } from './components/Navigation'
 import Homepage from './components/Pages/Homepage'
 import Movie from './components/Pages/Movies'

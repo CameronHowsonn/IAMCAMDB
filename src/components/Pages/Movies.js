@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getFilmById } from '../helpers/films'
+import { getFilmById } from '../helpers/films.js'
 import MovieDetail from '../movies/MovieDetail'
 import MovieHero from '../movies/MovieHero'
 

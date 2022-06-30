@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getMoviesFromPerson } from '../helpers/person'
+import { getMoviesFromPerson } from '../helpers/person.js'
 
 const PersonFilms = ({ id }) => {
   const [movies, setMovies] = useState(null)
@@ -20,11 +20,11 @@ const PersonFilms = ({ id }) => {
   return (
     <div>
       {movies && (
-        <div className='person__films'>
+        <div className="person__films">
           <h3>Movies</h3>
           {movies.cast
-            .map((movie) => (
-              <div key={movie.id} className='person__films--single'>
+            .map(movie => (
+              <div key={movie.id} className="person__films--single">
                 <Link to={`/movie/${movie.id}`}>
                   {movie.title.split(' ').splice(0, 5).join(' ')}
                   {movie.title.split(' ').splice(0, 3).length > 5 && '...'}

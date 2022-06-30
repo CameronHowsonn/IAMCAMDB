@@ -1,7 +1,6 @@
-import React from 'react'
+import { FaMinus, FaPlus, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { FaStar, FaPlus, FaMinus } from 'react-icons/fa'
-import { addFilm, removeFilm } from './helpers/localStorage'
+import { addFilm, removeFilm } from './helpers/localStorage.js'
 
 const Film = ({ film, config, isInList }) => {
   console.log(isInList)
@@ -10,23 +9,23 @@ const Film = ({ film, config, isInList }) => {
     return false
   }
   return (
-    <div className='objFit film__container' aria-label={film.original_title}>
-      <Link to={`/movie/${film.id}`} className='film__link'>
-        <div className='film__image'>
+    <div className="objFit film__container" aria-label={film.original_title}>
+      <Link to={`/movie/${film.id}`} className="film__link">
+        <div className="film__image">
           <img
             src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
             alt={`${film.title}`}
-            loading='lazy'
+            loading="lazy"
           />
         </div>
       </Link>
-      <div className='film__details'>
-        <div className='film__details--rating'>
+      <div className="film__details">
+        <div className="film__details--rating">
           <FaStar />
           {film.vote_average.toFixed(1)}
         </div>
         <div
-          className='film__details--list'
+          className="film__details--list"
           onClick={() => (isInList ? removeFilm(film.id) : addFilm(film.id))}
         >
           {isInList ? <FaMinus /> : <FaPlus />}

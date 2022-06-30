@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import MobileCheck from './../../hooks/mobile-check'
 import 'swiper/css/scrollbar'
-import { getListOfPeople } from '../helpers/person'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { getListOfPeople } from '../helpers/person.js'
+import MobileCheck from './../../hooks/mobile-check'
 
 const HomepagePopularPeople = ({ config }) => {
   const mobileCheck = MobileCheck()
@@ -25,11 +25,11 @@ const HomepagePopularPeople = ({ config }) => {
   }
 
   return (
-    <div className='homepage__popular-people'>
-      <div className='homepage__popular-people__inner'>
-        <div className='homepage__popular-people-controls'>
+    <div className="homepage__popular-people">
+      <div className="homepage__popular-people__inner">
+        <div className="homepage__popular-people-controls">
           <h1>Popular Actors</h1>
-          <div className='swiper-scrollbar1'></div>
+          <div className="swiper-scrollbar1"></div>
         </div>
         <Swiper
           modules={[Navigation, Scrollbar]}
@@ -57,16 +57,16 @@ const HomepagePopularPeople = ({ config }) => {
               return (
                 <SwiperSlide key={`person--${index}`}>
                   <Link to={`person/${person.id}`}>
-                    <div className='objFit homepage__popular-people-person'>
-                      <div className='homepage__popular-people-person-details'>
+                    <div className="objFit homepage__popular-people-person">
+                      <div className="homepage__popular-people-person-details">
                         {person.name && <h4>{person.name}</h4>}
                       </div>
-                      <div className='homepage__popular-people-person-image-container'>
+                      <div className="homepage__popular-people-person-image-container">
                         <img
-                          className='homepage__popular-people-person-image'
+                          className="homepage__popular-people-person-image"
                           src={`${config.images.base_url}${config.images.profile_sizes[2]}${person.profile_path}`}
                           alt={`${person.name}`}
-                          loading='lazy'
+                          loading="lazy"
                         />
                       </div>
                     </div>

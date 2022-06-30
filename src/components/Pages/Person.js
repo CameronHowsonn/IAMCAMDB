@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaBirthdayCake } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
-import { getPersonById } from '../helpers/person'
+import { getPersonById } from '../helpers/person.js'
 import PersonFilms from '../person/PersonFilms'
 
 const Person = ({ config }) => {
@@ -17,18 +17,18 @@ const Person = ({ config }) => {
   }, [id])
 
   return (
-    <div className='person container'>
-      <div className='person__image-featured'>
+    <div className="person container">
+      <div className="person__image-featured">
         {config && person && (
           <img
-            className='homepage__popular-image'
+            className="homepage__popular-image"
             src={`${config.images.base_url}${config.images.profile_sizes[2]}${person.profile_path}`}
             alt={`${person.title}`}
           />
         )}
       </div>
-      <div className='person__text'>
-        <div className='person__text--birthday'>
+      <div className="person__text">
+        <div className="person__text--birthday">
           {person?.birthday && (
             <p>
               <FaBirthdayCake />
@@ -40,7 +40,7 @@ const Person = ({ config }) => {
             </p>
           )}
         </div>
-        <div className='person__text--biography'>
+        <div className="person__text--biography">
           {person?.biography && <p>{person.biography}</p>}
         </div>
         <PersonFilms id={id} />
