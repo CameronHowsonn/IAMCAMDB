@@ -7,6 +7,7 @@ import Homepage from './components/Pages/Homepage'
 import Movie from './components/Pages/Movies'
 import Person from './components/Pages/Person'
 import Search from './components/Pages/Search'
+import ScrollTop from './hooks/scroll-top'
 
 const dataMenu = [
   {
@@ -92,6 +93,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <ScrollTop />
         <header className="header" ref={header}>
           <FullscreenMenu data={dataMenu} colorIcon="white" header={header} />
         </header>
