@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getFilmById } from '../helpers/films.js'
+import MovieCredits from '../movies/MovieCredits.js'
 import MovieDetail from '../movies/MovieDetail'
 import MovieHero from '../movies/MovieHero'
 
@@ -31,6 +32,7 @@ const Movie = ({ config, filmList, genres }) => {
         config={config}
         genres={genres}
       />
+      <MovieCredits config={config} id={id} />
     </div>
   )
 }

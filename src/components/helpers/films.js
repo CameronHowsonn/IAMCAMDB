@@ -12,3 +12,11 @@ export async function getFilmById(id) {
   const data = await response.json()
   return data
 }
+export async function getFilmCredits(id) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+  )
+  const data = await response.json()
+  console.log(data)
+  return data
+}
