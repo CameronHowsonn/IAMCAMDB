@@ -7,11 +7,7 @@ const PersonFilms = ({ id }) => {
   const [moviesShown, setMoviesShown] = useState(10)
 
   useEffect(() => {
-    async function getData() {
-      const data = await getMoviesFromPerson(id)
-      setMovies(data)
-    }
-    getData()
+    getMoviesFromPerson(id).then(data => setMovies(data))
   }, [id])
 
   const showMoreMovies = useCallback(() => {

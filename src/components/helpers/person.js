@@ -3,6 +3,7 @@ export async function getPersonById(id) {
     `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
   const data = await response.json()
+  console.log(data)
   return data
 }
 
@@ -22,13 +23,10 @@ export async function getListOfPeople() {
   return data
 }
 
-export async function getPersonHeroImage(id) {
+export async function getOneTaggedPhoto(id) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/person/${id}/tagged_images?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   )
   const data = await response.json()
-  const image = data.profiles.reduce((prev, current) => {
-    return prev.width > current.width ? prev : current
-  })
-  return image
+  return data.results[Math.floor(Math.random() * data.results.length)]
 }

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getPersonHeroImage } from '../helpers/person'
+import { getOneTaggedPhoto } from '../helpers/person'
 
 const PersonHero = ({ config, id }) => {
   const [image, setImage] = useState(false)
 
   useEffect(() => {
-    getPersonHeroImage(id).then(data => setImage(data))
+    getOneTaggedPhoto(id).then(data => setImage(data))
   }, [id])
 
   return (
