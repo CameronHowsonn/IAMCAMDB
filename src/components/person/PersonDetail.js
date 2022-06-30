@@ -1,4 +1,5 @@
 import { FaBirthdayCake } from 'react-icons/fa'
+import PersonLinks from './PersonLinks'
 
 const PersonDetail = ({ person, config }) => {
   return (
@@ -29,24 +30,7 @@ const PersonDetail = ({ person, config }) => {
                 </h2>
               </div>
             )}
-            <div className="person-detail__image--details--money">
-              <div className="budget">
-                {/* {film && film.budget > 0 && (
-                  <>
-                    <p>Budget: </p>
-                    <span>${film.budget.toLocaleString()}</span>
-                  </>
-                )} */}
-              </div>
-              <div className="budget">
-                {/* {film && film.revenue > 0 && (
-                  <>
-                    <p>Revenue: </p>
-                    <span>${film.revenue.toLocaleString()}</span>
-                  </>
-                )} */}
-              </div>
-            </div>
+            <PersonLinks id={person.id} />
           </div>
         </div>
         <div className="person-detail__info">

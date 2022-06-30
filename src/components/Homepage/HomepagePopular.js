@@ -61,6 +61,7 @@ const HomepagePopular = ({ config, genres }) => {
                 className="homepage__popular-image objFit"
                 src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${currentFilm.backdrop_path}`}
                 alt={`${currentFilm.title}`}
+                loading="eager"
               />
             )}
             <div className="homepage__popular-details">
