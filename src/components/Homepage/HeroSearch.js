@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { FaFilter, FaSearch } from 'react-icons/fa'
+import { useCallback, useEffect, useState } from 'react'
+import { FaSearch } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const HeroSearch = () => {
@@ -8,7 +8,7 @@ const HeroSearch = () => {
   const [placeholder, setPlaceholder] = useState('Search for films')
   let navigate = useNavigate()
 
-  const handleSearch = (e) => {
+  const handleSearch = e => {
     if (e.target.value.length > 0) {
       setErrors(false)
     }
@@ -34,24 +34,25 @@ const HeroSearch = () => {
 
   return (
     <div className={`homepage__hero-search ${errors ? 'error' : ''}`}>
-      <div className='homepage__hero-search__inner'>
-        <div className='homepage__hero-search__inner--search'>
+      <div className="homepage__hero-search__inner">
+        <div className="homepage__hero-search__inner--search">
           <input
-            type='text'
+            type="text"
             placeholder={placeholder}
-            onChange={(e) => handleSearch(e)}
+            onChange={e => handleSearch(e)}
           />
-          <div className='homepage__hero-search__inner--buttons'>
-            <button
-              onClick={() => {
-                handleSubmit()
-              }}
-            >
+          <div
+            className="homepage__hero-search__inner--buttons"
+            onClick={() => {
+              handleSubmit()
+            }}
+          >
+            <button>
               <FaSearch />
             </button>
           </div>
           {errors ? (
-            <div className='homepage__hero-search__inner--error'>
+            <div className="homepage__hero-search__inner--error">
               Please enter a search term
             </div>
           ) : (
