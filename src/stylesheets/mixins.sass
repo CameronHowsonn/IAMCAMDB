@@ -1,4 +1,4 @@
-=primaryFont
+=mainFont
     font-family: 'Open Sans', sans-serif
 
 =secondaryFont
@@ -16,6 +16,7 @@
 
 =opacityHover
     opacity: 0.5
+    transition: opacity 0.3s ease-in-out
     &:hover
         opacity: 1
 
@@ -45,9 +46,10 @@
         font-size: 0.85em
 
 =yellowHover
-    transition: color 0.3s ease-in-out
+    transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out
     &:hover
         color: $yellow
+        opacity: 1
 .big-text
     +bigText
 

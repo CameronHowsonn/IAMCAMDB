@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import MovieStar from './MovieStars'
 
 const MovieDetail = ({ film, config, genres }) => {
@@ -75,7 +76,7 @@ const MovieDetail = ({ film, config, genres }) => {
                     return (
                       <span className="film-tags__item" key={`genre--${index}`}>
                         <p>
-                          {genre.name}
+                          <Link to={`/search/${genre.name}`}>{genre.name}</Link>
                           <span className="film-tags__item-seperator">
                             {index === film.genres.length - 1 ? '' : ', '}
                           </span>
