@@ -1,6 +1,6 @@
 const MovieHero = ({ path, config, title }) => {
   return (
-    <section className={`movie-hero ${path ? 'image' : 'no-image'}`}>
+    <section className={`image-hero ${path ? 'image' : 'no-image'}`}>
       <div className="movie-hero__bg objFit">
         {path ? (
           <img

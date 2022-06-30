@@ -19,6 +19,17 @@
     padding: 0
     width: 100%
 
+  &__info
+    flex: 0 0 66%
+
+    &--name
+      margin: 0
+      transition: color 0.3s ease-in-out
+      white-space: nowrap
+
+    &--character
+      +smallText
+
   &__item
     align-items: center
     display: inline-flex
@@ -27,11 +38,22 @@
     @media (min-width: $desktop)
       flex: 0 0 calc((100% / 3) - 2em)
 
+    &:hover
+      .movie-credits__info--name
+        color: $yellow
+
+    > *
+      color: $white
+      text-decoration: none
+
     &-image
       border-radius: 100%
+      flex: 0 0 33%
       height: 4em
       margin-right: 1em
-      width: 4em
+      max-width: 4em
+      min-width: 4em
+      width: 100%
       .no-profile &
         position: relative
         svg

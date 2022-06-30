@@ -19,10 +19,16 @@
       width: 100%
 
     &--search
+      border: 2px solid transparent
       position: relative
+      transition: border 0.3s ease-in-out
       .error &
-        border: 2px solid $red
+        border: 3px solid $red
         border-radius: 3em
+        input
+          &::placeholder
+            color: $red
+            opacity: 0.8
 
     &--buttons
       background: $yellow

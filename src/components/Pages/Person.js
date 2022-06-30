@@ -3,6 +3,7 @@ import { FaBirthdayCake } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { getPersonById } from '../helpers/person.js'
 import PersonFilms from '../person/PersonFilms'
+import PersonHero from '../person/PersonHero.js'
 
 const Person = ({ config }) => {
   let { id } = useParams()
@@ -10,11 +11,11 @@ const Person = ({ config }) => {
 
   useEffect(() => {
     getPersonById(id).then(data => setPerson(data))
-    console.log(person)
   }, [id])
 
   return (
     <div className="person container">
+      <PersonHero config={config} id={id} />
       <div className="person__image-featured">
         {config && person && (
           <img

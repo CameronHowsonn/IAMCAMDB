@@ -35,7 +35,10 @@ const Search = ({ config, filmList }) => {
         <div className="search__pagination">
           <button
             className="search__pagination__button button prev"
-            onClick={() => setPage(page - 1)}
+            onClick={() => {
+              setPage(page - 1)
+              return false
+            }}
             disabled={page === 1}
           >
             <FaLongArrowAltLeft />
@@ -43,7 +46,10 @@ const Search = ({ config, filmList }) => {
           </button>
           <button
             className="search__pagination__button button next"
-            onClick={() => setPage(page + 1)}
+            onClick={() => {
+              setPage(page + 1)
+              return false
+            }}
             disabled={page === totalPages}
           >
             Next

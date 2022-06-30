@@ -38,9 +38,8 @@ const MovieImages = ({ id, config }) => {
           }}
         >
           {images.map((image, index) => (
-            <SwiperSlide>
+            <SwiperSlide key={`${index}-${image.file_path}`}>
               <img
-                key={`${index}-${image.file_path}`}
                 className="movie-images__image"
                 src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${image.file_path}`}
                 alt={image.file_path}
