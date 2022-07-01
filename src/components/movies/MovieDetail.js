@@ -12,37 +12,37 @@ const MovieDetail = ({ film, config, genres }) => {
         >
           {film.poster_path ? (
             <img
-              src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
-              alt={`film poster for ${film.original_title}`}
+              src={`${config?.images.base_url}${config?.images?.profile_sizes[3]}${film?.poster_path}`}
+              alt={`film poster for ${film?.original_title}`}
               loading="lazy"
             />
           ) : (
             <h2>No Image Available</h2>
           )}
           <div className="movie-detail__image--details">
-            {film.vote_average > 0 && (
+            {film?.vote_average > 0 && (
               <div className="movie-detail__image--details--stars">
-                <h2 className="stars-title">{film.vote_average}</h2>
-                <h5 className="stars-subtitle">{film.vote_count} Votes</h5>
+                <h2 className="stars-title">{film?.vote_average}</h2>
+                <h5 className="stars-subtitle">{film?.vote_count} Votes</h5>
                 <div className="star-container">
-                  <MovieStar stars={film.vote_average} />
+                  <MovieStar stars={film?.vote_average} />
                 </div>
               </div>
             )}
             <div className="movie-detail__image--details--money">
               <div className="budget">
-                {film && film.budget > 0 && (
+                {film && film?.budget > 0 && (
                   <>
                     <p>Budget: </p>
-                    <span>${film.budget.toLocaleString()}</span>
+                    <span>${film?.budget?.toLocaleString()}</span>
                   </>
                 )}
               </div>
               <div className="budget">
-                {film && film.revenue > 0 && (
+                {film && film?.revenue > 0 && (
                   <>
                     <p>Revenue: </p>
-                    <span>${film.revenue.toLocaleString()}</span>
+                    <span>${film?.revenue?.toLocaleString()}</span>
                   </>
                 )}
               </div>
@@ -51,35 +51,41 @@ const MovieDetail = ({ film, config, genres }) => {
         </div>
         <div className="movie-detail__info">
           <h1 className="movie-detail__title">
-            {film.original_title} (
-            {new Date(film.release_date).toUTCString().split(' ')[3]})
+            {film?.original_title} (
+            {new Date(film?.release_date).toUTCString().split(' ')[3]})
           </h1>
-          <h4>{film.tagline}</h4>
+          {film?.tagline && <h4>{film.tagline}</h4>}
           <div className="movie-detail__info-details">
-            <div className="movie-detail__info-details-item">
-              <p className="movie-detail__info-details-item-value">
-                {film.runtime} minutes
-              </p>
-            </div>
-            <div className="movie-detail__info-details-item">
-              <p className="movie-detail__info-details-item-value">
-                {new Date(film.release_date)
-                  .toUTCString()
-                  .split(' ')
-                  .splice(0, 4)
-                  .join(' ')}
-              </p>
-            </div>
+            {film?.runtime && (
+              <div className="movie-detail__info-details-item">
+                <p className="movie-detail__info-details-item-value">
+                  {film.runtime} minutes
+                </p>
+              </div>
+            )}
+            {film?.release_date && (
+              <div className="movie-detail__info-details-item">
+                <p className="movie-detail__info-details-item-value">
+                  {new Date(film.release_date)
+                    .toUTCString()
+                    .split(' ')
+                    .splice(0, 4)
+                    .join(' ')}
+                </p>
+              </div>
+            )}
             <div className="movie-detail__info-details-item">
               <span className="movie-detail__info-details-item-value film-tags">
-                {film.genres &&
-                  film.genres.map((genre, index) => {
+                {film?.genres &&
+                  film?.genres?.map((genre, index) => {
                     return (
                       <span className="film-tags__item" key={`genre--${index}`}>
                         <p>
-                          <Link to={`/search/${genre.name}`}>{genre.name}</Link>
+                          <Link to={`/search/${genre?.name}`}>
+                            {genre?.name}
+                          </Link>
                           <span className="film-tags__item-seperator">
-                            {index === film.genres.length - 1 ? '' : ', '}
+                            {index === film?.genres?.length - 1 ? '' : ', '}
                           </span>
                         </p>
                       </span>
@@ -88,7 +94,9 @@ const MovieDetail = ({ film, config, genres }) => {
               </span>
             </div>
           </div>
-          <p className="movie-detail__description">{film.overview}</p>
+          {film?.overview && (
+            <p className="movie-detail__description">{film.overview}</p>
+          )}
         </div>
       </div>
     </section>

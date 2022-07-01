@@ -37,10 +37,10 @@ const TVCredits = ({ id, config }) => {
           <h2 className="no-credits center">No Credits Available</h2>
         )}
         <ul className="movie-credits__list">
-          {currentCredits.length > 0 &&
-            currentCredits.map(cast => (
+          {currentCredits?.length > 0 &&
+            currentCredits?.map(cast => (
               <li
-                key={cast.id}
+                key={cast?.id}
                 className={`movie-credits__item ${
                   cast.profile_path ? 'has-profile' : 'no-profile'
                 }`}

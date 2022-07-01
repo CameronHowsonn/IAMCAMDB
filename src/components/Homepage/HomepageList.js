@@ -38,10 +38,10 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
     <div className="homepage__popular-people">
       <div className="homepage__popular-people__inner">
         <div className="homepage__popular-people-controls">
-          <h1 className="big-text">{title}</h1>
-          <div className={swiperClass}></div>
+          {title && <h1 className="big-text">{title}</h1>}
+          {swiperClass && <div className={swiperClass}></div>}
         </div>
-        {filmData.length > 0 ? (
+        {filmData?.length > 0 ? (
           <Swiper
             modules={[Navigation, Scrollbar]}
             slidesPerView={mobileCheck ? 1.25 : 6.75}
@@ -62,9 +62,9 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
           >
             {config &&
               filmList &&
-              filmData.length > 0 &&
-              filmData.map((film, index) => {
-                const isInList = filmList.includes(film.id)
+              filmData?.length > 0 &&
+              filmData?.map((film, index) => {
+                const isInList = filmList?.includes(film.id)
                 return (
                   <SwiperSlide key={`movie--${index}`}>
                     <Film film={film} config={config} isInList={isInList} />

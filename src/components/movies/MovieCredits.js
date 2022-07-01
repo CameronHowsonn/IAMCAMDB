@@ -12,20 +12,24 @@ const MovieCredits = ({ config, id }) => {
   }, [id])
 
   useEffect(() => {
-    setCurrentCredits(credits.slice(0, index))
+    setCurrentCredits(credits?.slice(0, index))
   }, [credits, index])
 
   return (
     <section className="movie-credits">
       <div className="movie-credits__inner">
         <h1 className="movie-credits__title">
-          Cast <span className="opaque small-text">({credits.length})</span>
+          {credits && (
+            <>
+              Cast <span className="opaque small-text">({credits.length})</span>
+            </>
+          )}
         </h1>
         <ul className="movie-credits__list">
-          {currentCredits.length > 0 ? (
-            currentCredits.map(cast => (
+          {currentCredits?.length > 0 ? (
+            currentCredits?.map(cast => (
               <li
-                key={cast.id}
+                key={cast?.id}
                 className={`movie-credits__item ${
                   cast.profile_path ? 'has-profile' : 'no-profile'
                 }`}
@@ -38,7 +42,7 @@ const MovieCredits = ({ config, id }) => {
           )}
           {credits.length > index && (
             <li className={`movie-credits__item`}>
-              {currentCredits.length === index && (
+              {currentCredits?.length === index && (
                 <h4
                   className="movie-credits__show-more"
                   onClick={() => setIndex(oldIndex => oldIndex + 11)}

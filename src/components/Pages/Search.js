@@ -28,14 +28,16 @@ const Search = ({ config, filmList }) => {
   return (
     <section className="search">
       <div className="search-header-container" ref={header}>
-        <SearchHeader term={searchTerm} />
+        {searchTerm && <SearchHeader term={searchTerm} />}
       </div>
-      <SearchResults
-        results={results}
-        totalPages={totalPages}
-        filmList={filmList}
-        config={config}
-      />
+      {results && totalPages && filmList && config && (
+        <SearchResults
+          results={results}
+          totalPages={totalPages}
+          filmList={filmList}
+          config={config}
+        />
+      )}
 
       {totalPages > 1 ? (
         <div className="search__pagination">

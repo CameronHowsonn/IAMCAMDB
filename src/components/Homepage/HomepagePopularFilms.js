@@ -55,8 +55,8 @@ const HomepagePopularFilms = ({
           {config &&
             filmData &&
             filmList &&
-            filmData.map((film, index) => {
-              const isInList = filmList.includes(film.id)
+            filmData?.map((film, index) => {
+              const isInList = filmList?.includes(film.id)
               return (
                 <SwiperSlide key={`movie--${index}`}>
                   <Film film={film} config={config} isInList={isInList} />

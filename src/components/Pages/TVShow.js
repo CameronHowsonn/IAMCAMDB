@@ -23,14 +23,16 @@ const TVShow = ({ config, filmList }) => {
       {show && <TVDetail show={show} config={config} />}
       {show && <TVCredits id={id} config={config} />}
       {show && <TVImages id={id} config={config} />}
-      <HomepagePopularTV
-        config={config}
-        title="Similar TV Shows"
-        timeframe={'day'}
-        swiperClass={'similar-swiper'}
-        filmList={filmList}
-        films={similarShows}
-      />
+      {config && filmList && similarShows && (
+        <HomepagePopularTV
+          config={config}
+          title="Similar TV Shows"
+          timeframe={'day'}
+          swiperClass={'similar-swiper'}
+          filmList={filmList}
+          films={similarShows}
+        />
+      )}
     </div>
   )
 }

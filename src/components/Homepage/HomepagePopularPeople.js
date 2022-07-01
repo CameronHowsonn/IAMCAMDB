@@ -51,7 +51,7 @@ const HomepagePopularPeople = ({ config }) => {
         >
           {config &&
             personData &&
-            personData.map((person, index) => {
+            personData?.map((person, index) => {
               return (
                 <SwiperSlide key={`person--${index}`}>
                   <Link to={`person/${person.id}`}>
@@ -59,14 +59,16 @@ const HomepagePopularPeople = ({ config }) => {
                       <div className="homepage__popular-people-person-image-container">
                         <img
                           className="homepage__popular-people-person-image"
-                          src={`${config.images.base_url}${config.images.profile_sizes[2]}${person.profile_path}`}
-                          alt={`${person.name}`}
+                          src={`${config?.images.base_url}${config?.images?.profile_sizes[2]}${person?.profile_path}`}
+                          alt={`${person?.name}`}
                           loading="lazy"
                         />
                       </div>
-                      <div className="homepage__popular-people-person-details">
-                        {person.name && <h4>{person.name}</h4>}
-                      </div>
+                      {person?.name && (
+                        <div className="homepage__popular-people-person-details">
+                          {person.name && <h4>{person.name}</h4>}
+                        </div>
+                      )}
                     </div>
                   </Link>
                 </SwiperSlide>

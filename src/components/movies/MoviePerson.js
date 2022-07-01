@@ -12,7 +12,7 @@ const MoviePerson = ({ person, config }) => {
         {person.profile_path ? (
           <img
             className="movie-credits__image"
-            src={`${config.images.base_url}${config.images.profile_sizes[1]}${person.profile_path}`}
+            src={`${config?.images?.base_url}${config?.images?.profile_sizes[1]}${person?.profile_path}`}
             alt={person.name}
             loading="lazy"
             width="100%"

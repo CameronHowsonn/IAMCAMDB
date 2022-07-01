@@ -56,37 +56,38 @@ const PersonFilms = ({ id, config }) => {
               <option value="popularity">Popularity</option>
             </select>
           </header>
-          {sortedMovies.map(movie => {
-            console.log(movie.vote_average)
+          {sortedMovies?.map(movie => {
             if (!isNaN(movie.release_date)) {
               return false
             }
 
             return (
-              <div key={movie.id} className="person__films--single">
-                <Link to={`/movie/${movie.id}`}>
+              <div key={movie?.id} className="person__films--single">
+                <Link to={`/movie/${movie?.id}`}>
                   <p className="person__films--single-star">
                     <>
                       <FaStar />
-                      {movie.vote_average > 0
-                        ? movie.vote_average.toFixed(1)
+                      {movie?.vote_average > 0
+                        ? movie?.vote_average?.toFixed(1)
                         : '?'}
                     </>
                   </p>
                   <p className="person__films--single-title">
-                    {movie.title.split(' ').splice(0, 5).join(' ')}
-                    {movie.title.split(' ').splice(0, 3).length > 5 && '...'}
-                    {movie.character && <span>{movie.character}</span>}
+                    {movie?.title?.split(' ').splice(0, 5).join(' ')}
+                    {movie?.title?.split(' ').splice(0, 3).length > 5 && '...'}
+                    {movie?.character && <span>{movie.character}</span>}
                   </p>
                 </Link>
-                <p className="person__film--single-date">
-                  {' '}
-                  {new Date(movie.release_date)
-                    .toUTCString()
-                    .split(' ')
-                    .splice(0, 4)
-                    .join(' ')}
-                </p>
+                {movie?.release_date && (
+                  <p className="person__film--single-date">
+                    {' '}
+                    {new Date(movie.release_date)
+                      .toUTCString()
+                      .split(' ')
+                      .splice(0, 4)
+                      .join(' ')}
+                  </p>
+                )}
               </div>
             )
           })}

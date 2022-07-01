@@ -29,8 +29,8 @@ const HomepagePopularTV = ({ config, swiperClass, title, filmList, films }) => {
     <div className="homepage__popular-people">
       <div className="homepage__popular-people__inner">
         <div className="homepage__popular-people-controls">
-          <h1 className="big-text">{title}</h1>
-          <div className={swiperClass}></div>
+          {title && <h1 className="big-text">{title}</h1>}
+          {swiperClass && <div className={swiperClass}></div>}
         </div>
         <Swiper
           modules={[Navigation, Scrollbar]}
@@ -52,9 +52,8 @@ const HomepagePopularTV = ({ config, swiperClass, title, filmList, films }) => {
         >
           {config &&
             filmData &&
-            filmData.map((film, index) => {
-              const isInList = filmList.includes(film.id)
-              console.log(film)
+            filmData?.map((film, index) => {
+              const isInList = filmList?.includes(film.id)
               return (
                 <SwiperSlide key={`tv-show--${index}`}>
                   <TVShow film={film} config={config} isInList={isInList} />

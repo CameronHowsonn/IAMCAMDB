@@ -6,10 +6,10 @@ const PersonDetail = ({ person, config }) => {
     <section className="person-detail">
       <div className="person-detail__inner">
         <div className="person-detail__image">
-          {person.profile_path ? (
+          {person?.profile_path ? (
             <img
-              src={`${config.images.base_url}${config.images.profile_sizes[3]}${person.profile_path}`}
-              alt={`film poster for ${person.name}`}
+              src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}${person?.profile_path}`}
+              alt={`film poster for ${person?.name}`}
               loading="lazy"
             />
           ) : (
@@ -17,13 +17,13 @@ const PersonDetail = ({ person, config }) => {
           )}
 
           <div className="person-detail__image--details">
-            {person.birthday && (
+            {person?.birthday && (
               <div className="person-detail__image--details--stars">
                 <h2 className="stars-title">
                   <div>
                     <FaBirthdayCake />
                   </div>
-                  {new Date(person.birthday)
+                  {new Date(person?.birthday)
                     .toUTCString()
                     .split(' ')
                     .splice(0, 4)
@@ -31,23 +31,25 @@ const PersonDetail = ({ person, config }) => {
                 </h2>
               </div>
             )}
-            <PersonLinks id={person.id} />
+            {person.id && <PersonLinks id={person.id} />}
           </div>
         </div>
         <div className="person-detail__info">
           {person?.name && (
-            <h1 className="person-detail__title">{person.name}</h1>
+            <h1 className="person-detail__title">{person?.name}</h1>
           )}
           <div className="person-detail__info-details">
             <div className="person-detail__info-details-item">
-              {person.place_of_birth && (
+              {person?.place_of_birth && (
                 <p className="person-detail__info-details-item-value">
-                  {person.place_of_birth}
+                  {person?.place_of_birth}
                 </p>
               )}
             </div>
           </div>
-          <p className="person-detail__description">{person.biography}</p>
+          {person?.biography && (
+            <p className="person-detail__description">{person.biography}</p>
+          )}
         </div>
       </div>
     </section>

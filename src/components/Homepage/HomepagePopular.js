@@ -40,7 +40,7 @@ const HomepagePopular = ({ config, genres }) => {
 
     const gen = []
 
-    currentFilm.genre_ids.map(ids => {
+    currentFilm?.genre_ids?.map(ids => {
       genres.map(genre => {
         if (genre.id === ids) {
           gen.push(genre.name)
@@ -59,35 +59,35 @@ const HomepagePopular = ({ config, genres }) => {
             {config && currentFilm && (
               <img
                 className="homepage__popular-image objFit"
-                src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${currentFilm.backdrop_path}`}
-                alt={`${currentFilm.title}`}
+                src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${currentFilm?.backdrop_path}`}
+                alt={`${currentFilm?.title}`}
                 loading="eager"
               />
             )}
             <div className="homepage__popular-details">
               <header className="hompage__popular-header">
-                {currentFilm.vote_average && (
+                {currentFilm?.vote_average && (
                   <h2 className="homepage__popular-details--stars">
                     <FaStar />
-                    {currentFilm.vote_average}
+                    {currentFilm?.vote_average}
                   </h2>
                 )}
 
-                {currentFilm.original_title && (
+                {currentFilm?.original_title && (
                   <h1 className="homepage__popular-details-title big-text">
-                    {currentFilm.original_title}
+                    {currentFilm?.original_title}
                   </h1>
                 )}
               </header>
               <div className="homepage__popular-details--tags film-tags">
                 {filmGenres &&
-                  filmGenres.map((genre, index) => {
+                  filmGenres?.map((genre, index) => {
                     return (
                       <span className="film-tags__item" key={`genre--${index}`}>
                         <p>
                           {genre}
                           <span className="film-tags__item-seperator">
-                            {index === filmGenres.length - 1 ? '' : ', '}
+                            {index === filmGenres?.length - 1 ? '' : ', '}
                           </span>
                         </p>
                       </span>
@@ -95,9 +95,9 @@ const HomepagePopular = ({ config, genres }) => {
                   })}
               </div>
               <div className="homepage__popular-details--buttons">
-                <AddListButton id={currentFilm.id} icon={'plus'} />
+                <AddListButton id={currentFilm?.id} icon={'plus'} />
                 <LinkButton
-                  link={`/movie/${currentFilm.id}`}
+                  link={`/movie/${currentFilm?.id}`}
                   text={'Learn More'}
                   buttonStyle="yellow"
                 />

@@ -13,7 +13,7 @@ const PersonHero = ({ config, id }) => {
       <div className="person-hero__bg objFit">
         {image ? (
           <img
-            src={`${config.images.base_url}${config.images.profile_sizes[3]}${image.file_path}`}
+            src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}${image?.file_path}`}
             alt={`film poster for ${id}`}
             loading="lazy"
           />

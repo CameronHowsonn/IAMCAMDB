@@ -21,7 +21,7 @@ const TVImages = ({ id, config }) => {
           <h1 className="movie-images__title big-text">Images</h1>
           <div className="movie-images__scrollbar"></div>
         </header>
-        {images.length > 0 ? (
+        {images?.length > 0 ? (
           <Swiper
             modules={[Navigation, Scrollbar]}
             slidesPerView={mobileCheck ? 1.25 : 2.75}
@@ -40,7 +40,7 @@ const TVImages = ({ id, config }) => {
               <SwiperSlide key={`${index}-${image.file_path}`}>
                 <img
                   className="movie-images__image"
-                  src={`${config.images.base_url}${config.images.backdrop_sizes[2]}${image.file_path}`}
+                  src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${image?.file_path}`}
                   alt={image.file_path}
                   loading="lazy"
                 />
@@ -48,7 +48,7 @@ const TVImages = ({ id, config }) => {
             ))}
           </Swiper>
         ) : (
-          <h1 className={`${images.length > 0 ? 'images' : 'no-image-title'}`}>
+          <h1 className={`${images?.length > 0 ? 'images' : 'no-image-title'}`}>
             No Images Available
           </h1>
         )}
