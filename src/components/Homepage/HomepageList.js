@@ -7,10 +7,18 @@ import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Film from '../Film'
 import { getFilmById } from '../helpers/films.js'
-import { getFilmList } from '../helpers/localStorage.js'
+import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
+import { getTVShowById } from '../helpers/tv-shows'
 import MobileCheck from './../../hooks/mobile-check'
 
-const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
+const HomepageList = ({
+  config,
+  swiperClass,
+  title,
+  filmList,
+  type,
+  tvList,
+}) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState([])
 
@@ -21,14 +29,36 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
         .then(items => setFilmData(items))
     }
 
-    getFilms()
-    window.addEventListener('localStorageAdd', () => getFilms())
-    window.addEventListener('localStorageRemove', () => getFilms())
-    return () => {
-      window.removeEventListener('localStorageAdd', getFilms())
-      window.removeEventListener('localStorageRemove', getFilms())
+    const getShows = async () => {
+      getTvShowList()
+        .then(list => Promise.all(list.map(item => getTVShowById(item))))
+        .then(items => setFilmData(items))
     }
-  }, [])
+
+    if (type === 'movie') {
+      getFilms()
+      window.addEventListener('localStorageAdd', () => getFilms())
+      window.addEventListener('localStorageRemove', () => getFilms())
+    }
+
+    if (type === 'tv') {
+      getShows()
+      window.addEventListener('localStorageAdd', () => getShows())
+      window.addEventListener('localStorageRemove', () => getShows())
+    }
+
+    return () => {
+      if (type === 'movie') {
+        window.removeEventListener('localStorageAdd', getFilms())
+        window.removeEventListener('localStorageRemove', getFilms())
+      }
+
+      if (type === 'tv') {
+        window.removeEventListener('localStorageAdd', getShows())
+        window.removeEventListener('localStorageRemove', getShows())
+      }
+    }
+  }, [type])
 
   if (!config) {
     return
@@ -64,10 +94,18 @@ const HomepageList = ({ config, swiperClass, title, timeframe, filmList }) => {
               filmList &&
               filmData?.length > 0 &&
               filmData?.map((film, index) => {
-                const isInList = filmList?.includes(film.id)
+                const isInList =
+                  type === 'movie'
+                    ? filmList?.includes(film.id)
+                    : tvList.includes(film.id)
                 return (
                   <SwiperSlide key={`movie--${index}`}>
-                    <Film film={film} config={config} isInList={isInList} />
+                    <Film
+                      film={film}
+                      config={config}
+                      isInList={isInList}
+                      type={type}
+                    />
                   </SwiperSlide>
                 )
               })}

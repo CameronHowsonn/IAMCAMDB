@@ -1,6 +1,6 @@
 import { FaMinus, FaPlus, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { addFilm, removeFilm } from './helpers/localStorage.js'
+import { addShow, removeShow } from './helpers/localStorage.js'
 
 const TVShow = ({ film, config, isInList }) => {
   if (!film.poster_path) {
@@ -24,7 +24,7 @@ const TVShow = ({ film, config, isInList }) => {
         </div>
         <div
           className="film__details--list"
-          onClick={() => (isInList ? removeFilm(film.id) : addFilm(film.id))}
+          onClick={() => (isInList ? removeShow(film.id) : addShow(film.id))}
         >
           {isInList ? <FaMinus /> : <FaPlus />}
         </div>

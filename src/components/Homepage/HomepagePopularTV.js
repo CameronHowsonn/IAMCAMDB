@@ -7,7 +7,7 @@ import { getPopularTvShows } from '../helpers/tv-shows.js'
 import TVShow from '../TVShow'
 import MobileCheck from './../../hooks/mobile-check'
 
-const HomepagePopularTV = ({ config, swiperClass, title, filmList, films }) => {
+const HomepagePopularTV = ({ config, swiperClass, title, tvList, films }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
 
@@ -53,7 +53,7 @@ const HomepagePopularTV = ({ config, swiperClass, title, filmList, films }) => {
           {config &&
             filmData &&
             filmData?.map((film, index) => {
-              const isInList = filmList?.includes(film.id)
+              const isInList = tvList?.includes(film.id)
               return (
                 <SwiperSlide key={`tv-show--${index}`}>
                   <TVShow film={film} config={config} isInList={isInList} />

@@ -1,7 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
-import { getFilmList } from './components/helpers/localStorage.js'
+import {
+  getFilmList,
+  getTvShowList,
+} from './components/helpers/localStorage.js'
 import { FullscreenMenu } from './components/Navigation'
 import Homepage from './components/Pages/Homepage'
 import Movie from './components/Pages/Movies'
@@ -76,10 +79,12 @@ function App() {
   }, [])
 
   const [filmList, setFilmList] = useState(null)
+  const [tvList, setTVList] = useState(null)
 
   useEffect(() => {
     const getFilms = async () => {
       getFilmList().then(list => setFilmList(list))
+      getTvShowList().then(list => setTVList(list))
     }
     getFilms()
 
@@ -111,6 +116,7 @@ function App() {
                         config={config}
                         genres={genres}
                         filmList={filmList}
+                        tvList={tvList}
                       />
                     }
                   />
