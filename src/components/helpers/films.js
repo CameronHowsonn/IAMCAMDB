@@ -57,6 +57,7 @@ export async function getFilmGenres() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
   const data = await response.json()
+  console.log(data)
   return data
 }
 
@@ -65,5 +66,6 @@ export async function getFilmsByGenre(id, page) {
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&with_genres=${id}&page=${page}`
   )
   const data = await response.json()
+  console.log(data)
   return data
 }

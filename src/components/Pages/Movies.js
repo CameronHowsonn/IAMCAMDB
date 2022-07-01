@@ -1,9 +1,11 @@
 import HomepagePopular from '../homepage/HomepagePopular'
+import MovieGenres from '../movies/MoviesGenres'
 
-const Movies = ({ config }) => {
+const Movies = ({ config, genres }) => {
   return (
     <section className="movies">
       <HomepagePopular config={config} search={false} />
+      <MovieGenres genres={genres} />
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
+import { getFilmGenres } from './components/helpers/films'
 import {
   getFilmList,
   getTvShowList,
@@ -52,14 +53,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    )
-      .then(response => response.json())
-      .then(data => {
-        setGenres(data.genres)
-        return data
-      })
+    getFilmGenres().then(data => setGenres(data))
   }, [])
 
   useLayoutEffect(() => {
@@ -151,7 +145,13 @@ function App() {
                   />
                   <Route
                     path="/movies"
-                    element={<Movies config={config} filmList={filmList} />}
+                    element={
+                      <Movies
+                        config={config}
+                        filmList={filmList}
+                        genres={genres}
+                      />
+                    }
                   />
                 </Routes>
               )}

@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaStar } from 'react-icons/fa'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
+import { isFilmInList } from '../helpers/localStorage'
 import HeroSearch from './HeroSearch'
 
 const HomepagePopular = ({ config, genres, search }) => {
@@ -11,6 +12,7 @@ const HomepagePopular = ({ config, genres, search }) => {
   const [filmGenres, setFilmGenres] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentFilm, setCurrentFilm] = useState(null)
+  const [isInList, setIsInList] = useState(false)
 
   useLayoutEffect(() => {
     const getData = async () => {
@@ -27,6 +29,7 @@ const HomepagePopular = ({ config, genres, search }) => {
 
   useEffect(() => {
     setCurrentFilm(filmData[currentIndex])
+    setIsInList(isFilmInList(filmData[currentIndex]?.id))
   }, [currentIndex, filmData])
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const HomepagePopular = ({ config, genres, search }) => {
     const gen = []
 
     currentFilm?.genre_ids?.map(ids => {
-      genres.map(genre => {
+      genres.genres.map(genre => {
         if (genre.id === ids) {
           gen.push(genre.name)
           return genre.name
@@ -95,7 +98,11 @@ const HomepagePopular = ({ config, genres, search }) => {
                   })}
               </div>
               <div className="homepage__popular-details--buttons">
-                <AddListButton id={currentFilm?.id} icon={'plus'} />
+                <AddListButton
+                  id={currentFilm?.id}
+                  icon={'plus'}
+                  disabled={isInList}
+                />
                 <LinkButton
                   link={`/movie/${currentFilm?.id}`}
                   text={'Learn More'}

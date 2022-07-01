@@ -1,0 +1,15 @@
+
+.movie-genres
+  +guttersDouble
+  +guttersTopBottomDouble
+  display: flex
+  flex-wrap: wrap
+
+  &__genre
+    flex: 0 0 calc((100% / 5) - 1em)
+    margin: 0.5em
+
+    a
+      +noButton
+      +yellowHover
+      text-decoration: none

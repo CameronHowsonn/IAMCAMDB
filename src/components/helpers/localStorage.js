@@ -27,6 +27,12 @@ export async function removeFilm(id) {
   window.dispatchEvent(event)
 }
 
+export async function isFilmInList(id) {
+  const currentFilms = localStorage.getItem('filmList')
+  const filmList = currentFilms ? JSON.parse(currentFilms) : []
+  return filmList.includes(id)
+}
+
 //TV show
 export async function getTvShowList() {
   const tvShowList = localStorage.getItem('showList')
