@@ -7,15 +7,19 @@ import { getPopularTvShows } from '../helpers/tv-shows.js'
 import TVShow from '../TVShow'
 import MobileCheck from './../../hooks/mobile-check'
 
-const HomepagePopularTV = ({ config, swiperClass, title, filmList }) => {
+const HomepagePopularTV = ({ config, swiperClass, title, filmList, films }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
 
   useEffect(() => {
-    getPopularTvShows().then(data => {
-      setFilmData(data)
-    })
-  }, [])
+    if (films) {
+      setFilmData(films)
+    } else {
+      getPopularTvShows().then(data => {
+        setFilmData(data)
+      })
+    }
+  }, [films])
 
   if (!config) {
     return

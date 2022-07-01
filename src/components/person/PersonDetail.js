@@ -10,6 +10,7 @@ const PersonDetail = ({ person, config }) => {
             <img
               src={`${config.images.base_url}${config.images.profile_sizes[3]}${person.profile_path}`}
               alt={`film poster for ${person.name}`}
+              loading="lazy"
             />
           ) : (
             <h2>No Image Available</h2>

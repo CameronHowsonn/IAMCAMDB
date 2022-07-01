@@ -16,6 +16,7 @@ const MovieDetail = ({ show, config, genres }) => {
             <img
               src={`${config.images.base_url}${config.images.profile_sizes[3]}${show.poster_path}`}
               alt={`film poster for ${show.name}`}
+              loading="lazy"
             />
           ) : (
             <h2>No Image Available</h2>
@@ -91,6 +92,16 @@ const MovieDetail = ({ show, config, genres }) => {
                       </span>
                     )
                   })}
+              </span>
+            </div>
+            <div className="movie-detail__info-details-item">
+              <span className="movie-detail__info-details-item-value">
+                {show.number_of_episodes} Episodes
+              </span>
+            </div>
+            <div className="movie-detail__info-details-item">
+              <span className="movie-detail__info-details-item-value">
+                {show.number_of_seasons} Seasons
               </span>
             </div>
           </div>

@@ -33,6 +33,9 @@ const TVCredits = ({ id, config }) => {
             </>
           )}
         </h1>
+        {credits?.length === 0 && (
+          <h2 className="no-credits center">No Credits Available</h2>
+        )}
         <ul className="movie-credits__list">
           {currentCredits.length > 0 &&
             currentCredits.map(cast => (

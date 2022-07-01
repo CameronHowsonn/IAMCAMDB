@@ -14,6 +14,7 @@ const MovieDetail = ({ film, config, genres }) => {
             <img
               src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
               alt={`film poster for ${film.original_title}`}
+              loading="lazy"
             />
           ) : (
             <h2>No Image Available</h2>
