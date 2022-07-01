@@ -7,6 +7,7 @@ import Homepage from './components/Pages/Homepage'
 import Movie from './components/Pages/Movies'
 import Person from './components/Pages/Person'
 import Search from './components/Pages/Search'
+import TVShows from './components/Pages/TVShows'
 import ScrollTop from './hooks/scroll-top'
 
 const dataMenu = [
@@ -125,6 +126,16 @@ function App() {
                     path="/movie/:id"
                     element={
                       <Movie
+                        config={config}
+                        filmList={filmList}
+                        genres={genres}
+                      />
+                    }
+                  />
+                  <Route
+                    path="/tv-show/:id"
+                    element={
+                      <TVShows
                         config={config}
                         filmList={filmList}
                         genres={genres}

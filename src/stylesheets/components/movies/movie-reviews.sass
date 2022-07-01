@@ -1,0 +1,37 @@
+.movie-reviews
+  +guttersDouble
+  &__title
+    +bigText
+    +guttersBottom
+
+  &__list
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+    &--item
+      margin-bottom: 2em
+
+.movie-review
+  &__content
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+  &__rating
+    flex: 0 0 fit-content
+
+  &__title
+    flex: 0 0 100%
+
+  &__username
+    flex: 0 0 100%
+    margin-bottom: 0.5em
+
+  &__text
+    flex: 0 0 80%
+
+  &__date
+    +smallText
+    opacity: 0.5

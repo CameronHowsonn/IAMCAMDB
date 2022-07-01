@@ -2,6 +2,8 @@ import HomepageList from '../Homepage/HomepageList'
 import HomepagePopular from '../Homepage/HomepagePopular'
 import HomepagePopularFilms from '../Homepage/HomepagePopularFilms'
 import HomepagePopularPeople from '../Homepage/HomepagePopularPeople'
+import HomepagePopularTV from '../Homepage/HomepagePopularTV'
+
 const Homepage = ({ config, genres, filmList }) => {
   return (
     <>
@@ -27,6 +29,12 @@ const Homepage = ({ config, genres, filmList }) => {
             config={config}
             title="From Your List"
             swiperClass={'your-list-swiper'}
+            filmList={filmList}
+          />
+          <HomepagePopularTV
+            config={config}
+            title="Trending TV Shows"
+            swiperClass={'trending-tv-swiper'}
             filmList={filmList}
           />
         </>

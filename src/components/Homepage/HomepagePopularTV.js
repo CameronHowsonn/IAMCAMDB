@@ -3,25 +3,19 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Film from '../Film'
-import { getTrendingFilms } from '../helpers/films.js'
+import { getPopularTvShows } from '../helpers/tv-shows.js'
+import TVShow from '../TVShow'
 import MobileCheck from './../../hooks/mobile-check'
 
-const HomepagePopularFilms = ({
-  config,
-  swiperClass,
-  title,
-  timeframe,
-  filmList,
-}) => {
+const HomepagePopularTV = ({ config, swiperClass, title, filmList }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
 
   useEffect(() => {
-    getTrendingFilms(timeframe).then(data =>
-      setFilmData(data.results.splice(0, 16))
-    )
-  }, [timeframe])
+    getPopularTvShows().then(data => {
+      setFilmData(data)
+    })
+  }, [])
 
   if (!config) {
     return
@@ -56,12 +50,12 @@ const HomepagePopularFilms = ({
         >
           {config &&
             filmData &&
-            filmList &&
             filmData.map((film, index) => {
               const isInList = filmList.includes(film.id)
+              console.log(film)
               return (
-                <SwiperSlide key={`movie--${index}`}>
-                  <Film film={film} config={config} isInList={isInList} />
+                <SwiperSlide key={`tv-show--${index}`}>
+                  <TVShow film={film} config={config} isInList={isInList} />
                 </SwiperSlide>
               )
             })}
@@ -71,4 +65,4 @@ const HomepagePopularFilms = ({
   )
 }
 
-export default HomepagePopularFilms
+export default HomepagePopularTV

@@ -8,6 +8,8 @@ export async function addFilm(id) {
   const filmList = currentFilms ? JSON.parse(currentFilms) : []
   if (!filmList.includes(id)) {
     filmList.push(id)
+  } else {
+    return false
   }
   localStorage.setItem('filmList', JSON.stringify(filmList))
   const event = new Event('localStorageAdd')
