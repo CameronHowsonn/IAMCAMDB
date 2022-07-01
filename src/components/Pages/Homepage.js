@@ -40,7 +40,7 @@ const Homepage = ({ config, genres, filmList, tvList }) => {
           />
           <HomepageList
             config={config}
-            title="Movies From Your List"
+            title="Shows From Your List"
             swiperClass={'your-list-swiper'}
             filmList={filmList}
             tvList={tvList}
