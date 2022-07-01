@@ -35,9 +35,7 @@ const HomepagePopularPeople = ({ config }) => {
           modules={[Navigation, Scrollbar]}
           slidesPerView={mobileCheck ? 1.25 : 6.75}
           spaceBetween={20}
-          draggable={false}
           centeredSlides={false}
-          allowTouchMove={false}
           loop={false}
           navigation={{
             nextEl: '.swiper-button-next',

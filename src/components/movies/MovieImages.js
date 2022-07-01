@@ -26,9 +26,7 @@ const MovieImages = ({ id, config }) => {
             modules={[Navigation, Scrollbar]}
             slidesPerView={mobileCheck ? 1.25 : 2.75}
             spaceBetween={20}
-            draggable={false}
             centeredSlides={false}
-            allowTouchMove={false}
             loop={false}
             scrollbar={{
               el: '.movie-images__scrollbar',

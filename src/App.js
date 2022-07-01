@@ -7,7 +7,7 @@ import Homepage from './components/Pages/Homepage'
 import Movie from './components/Pages/Movies'
 import Person from './components/Pages/Person'
 import Search from './components/Pages/Search'
-import TVShows from './components/Pages/TVShows'
+import TVShow from './components/Pages/TVShow'
 import ScrollTop from './hooks/scroll-top'
 
 const dataMenu = [
@@ -135,7 +135,7 @@ function App() {
                   <Route
                     path="/tv-show/:id"
                     element={
-                      <TVShows
+                      <TVShow
                         config={config}
                         filmList={filmList}
                         genres={genres}

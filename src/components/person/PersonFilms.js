@@ -57,6 +57,7 @@ const PersonFilms = ({ id, config }) => {
             </select>
           </header>
           {sortedMovies.map(movie => {
+            console.log(movie.vote_average)
             if (!isNaN(movie.release_date)) {
               return false
             }
@@ -64,13 +65,15 @@ const PersonFilms = ({ id, config }) => {
             return (
               <div key={movie.id} className="person__films--single">
                 <Link to={`/movie/${movie.id}`}>
-                  {movie.vote_average > 0 && (
-                    <p className="person__films--single-star">
+                  <p className="person__films--single-star">
+                    <>
                       <FaStar />
-                      {movie.vote_average.toFixed(1)}
-                    </p>
-                  )}
-                  <p>
+                      {movie.vote_average > 0
+                        ? movie.vote_average.toFixed(1)
+                        : '?'}
+                    </>
+                  </p>
+                  <p className="person__films--single-title">
                     {movie.title.split(' ').splice(0, 5).join(' ')}
                     {movie.title.split(' ').splice(0, 3).length > 5 && '...'}
                     {movie.character && <span>{movie.character}</span>}
