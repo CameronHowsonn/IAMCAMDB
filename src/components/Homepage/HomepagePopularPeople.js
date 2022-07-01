@@ -4,8 +4,8 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import MobileCheck from '../../hooks/mobile-check'
 import { getListOfPeople } from '../helpers/person.js'
-import MobileCheck from './../../hooks/mobile-check'
 
 const HomepagePopularPeople = ({ config }) => {
   const mobileCheck = MobileCheck()

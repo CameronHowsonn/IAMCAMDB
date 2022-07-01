@@ -4,7 +4,7 @@ import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import HeroSearch from './HeroSearch'
 
-const HomepagePopular = ({ config, genres }) => {
+const HomepagePopular = ({ config, genres, search }) => {
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
 
   const [filmData, setFilmData] = useState([])
@@ -103,9 +103,11 @@ const HomepagePopular = ({ config, genres }) => {
                 />
               </div>
             </div>
-            <div className="homepage__popular--search">
-              <HeroSearch />
-            </div>
+            {search && (
+              <div className="homepage__popular--search">
+                <HeroSearch />
+              </div>
+            )}
             <div className="homepage__popular-details--arrows">
               <button
                 disabled={currentIndex <= 0}

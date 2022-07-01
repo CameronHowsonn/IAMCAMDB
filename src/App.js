@@ -6,11 +6,12 @@ import {
   getTvShowList,
 } from './components/helpers/localStorage.js'
 import { FullscreenMenu } from './components/Navigation'
-import Homepage from './components/Pages/Homepage'
-import Movie from './components/Pages/Movies'
-import Person from './components/Pages/Person'
-import Search from './components/Pages/Search'
-import TVShow from './components/Pages/TVShow'
+import Homepage from './components/pages/Homepage'
+import Movie from './components/pages/Movie'
+import Movies from './components/pages/Movies'
+import Person from './components/pages/Person'
+import Search from './components/pages/Search'
+import TVShow from './components/pages/TVShow'
 import ScrollTop from './hooks/scroll-top'
 
 const dataMenu = [
@@ -147,6 +148,10 @@ function App() {
                         genres={genres}
                       />
                     }
+                  />
+                  <Route
+                    path="/movies"
+                    element={<Movies config={config} filmList={filmList} />}
                   />
                 </Routes>
               )}

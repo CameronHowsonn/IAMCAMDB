@@ -5,11 +5,11 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import MobileCheck from '../../hooks/mobile-check'
 import Film from '../Film'
 import { getFilmById } from '../helpers/films.js'
 import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
 import { getTVShowById } from '../helpers/tv-shows'
-import MobileCheck from './../../hooks/mobile-check'
 
 const HomepageList = ({
   config,

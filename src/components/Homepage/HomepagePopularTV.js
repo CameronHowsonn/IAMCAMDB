@@ -3,9 +3,9 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import MobileCheck from '../../hooks/mobile-check'
 import { getPopularTvShows } from '../helpers/tv-shows.js'
 import TVShow from '../TVShow'
-import MobileCheck from './../../hooks/mobile-check'
 
 const HomepagePopularTV = ({ config, swiperClass, title, tvList, films }) => {
   const mobileCheck = MobileCheck()

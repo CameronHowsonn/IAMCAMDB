@@ -3,9 +3,9 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import MobileCheck from '../../hooks/mobile-check'
 import Film from '../Film'
 import { getTrendingFilms } from '../helpers/films.js'
-import MobileCheck from './../../hooks/mobile-check'
 
 const HomepagePopularFilms = ({
   config,

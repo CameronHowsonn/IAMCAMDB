@@ -1,8 +1,8 @@
-import HomepageList from '../Homepage/HomepageList'
-import HomepagePopular from '../Homepage/HomepagePopular'
-import HomepagePopularFilms from '../Homepage/HomepagePopularFilms'
-import HomepagePopularPeople from '../Homepage/HomepagePopularPeople'
-import HomepagePopularTV from '../Homepage/HomepagePopularTV'
+import HomepageList from '../homepage/HomepageList'
+import HomepagePopular from '../homepage/HomepagePopular'
+import HomepagePopularFilms from '../homepage/HomepagePopularFilms'
+import HomepagePopularPeople from '../homepage/HomepagePopularPeople'
+import HomepagePopularTV from '../homepage/HomepagePopularTV'
 
 const Homepage = ({ config, genres, filmList, tvList }) => {
   return (

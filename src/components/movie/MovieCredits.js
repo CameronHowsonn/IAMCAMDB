@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getFilmCredits } from './../helpers/films'
+import { getFilmCredits } from '../helpers/films'
 import MoviePerson from './MoviePerson'
 
 const MovieCredits = ({ config, id }) => {

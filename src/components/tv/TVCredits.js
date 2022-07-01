@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getTVShowCredits } from '../helpers/tv-shows'
-import MoviePerson from './../movies/MoviePerson'
+import MoviePerson from './../movie/MoviePerson'
 
 const TVCredits = ({ id, config }) => {
   const [credits, setCredits] = useState(null)

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getSimilarTvShows, getTVShowById } from '../helpers/tv-shows'
-import HomepagePopularTV from '../Homepage/HomepagePopularTV'
+import HomepagePopularTV from '../homepage/HomepagePopularTV'
 import TVCredits from '../tv/TVCredits'
 import TVDetail from '../tv/TVDetail'
 import TVHero from '../tv/TVHero'

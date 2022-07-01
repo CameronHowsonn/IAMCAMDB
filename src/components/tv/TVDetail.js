@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import MovieStar from '../movies/MovieStars'
+import MovieStar from '../movie/MovieStars'
 
 const MovieDetail = ({ show, config, genres }) => {
   return (
