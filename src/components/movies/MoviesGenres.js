@@ -6,7 +6,7 @@ const MovieGenres = ({ genres }) => {
       {genres?.genres?.map(genre => {
         return (
           <div className="movie-genres__genre" key={genre.id}>
-            <Link to={`/movies/genre/${genre.id}`}>
+            <Link to={`/movies/genre/${genre.name.toLowerCase()}/${genre.id}`}>
               <div className="movie-genres__genre-name">{genre.name}</div>
             </Link>
           </div>

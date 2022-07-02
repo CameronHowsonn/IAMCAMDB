@@ -7,7 +7,6 @@ import MovieDetail from '../movie/MovieDetail'
 import MovieHero from '../movie/MovieHero'
 import MovieImages from '../movie/MovieImages.js'
 import MovieReviews from '../movie/MovieReviews.js'
-
 const Movie = ({ config, filmList, genres }) => {
   const { id } = useParams()
   const [film, setFilm] = useState([])
@@ -22,13 +21,11 @@ const Movie = ({ config, filmList, genres }) => {
 
   return (
     <div className={`${film.poster_path ? 'image' : 'no-image'}`}>
-      {film?.backdrop_path && film?.original_title && (
-        <MovieHero
-          path={film.backdrop_path}
-          config={config}
-          title={film.original_title}
-        />
-      )}
+      <MovieHero
+        path={film.backdrop_path}
+        config={config}
+        title={film.original_title}
+      />
       {film && filmList && (
         <MovieDetail
           film={film}

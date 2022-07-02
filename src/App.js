@@ -9,6 +9,7 @@ import {
 import { FullscreenMenu } from './components/Navigation'
 import Homepage from './components/pages/Homepage'
 import Movie from './components/pages/Movie'
+import MovieGenre from './components/pages/MovieGenre'
 import Movies from './components/pages/Movies'
 import Person from './components/pages/Person'
 import Search from './components/pages/Search'
@@ -18,19 +19,19 @@ import ScrollTop from './hooks/scroll-top'
 const dataMenu = [
   {
     label: 'Movies',
-    url: 'movies',
+    url: '/movies',
     sub_title: null,
     sub_menu: null,
   },
   {
     label: 'TV Shows',
-    url: 'tv-shows',
+    url: '/tv-shows',
     sub_title: null,
     sub_menu: null,
   },
   {
     label: 'Actors',
-    url: 'actors',
+    url: '/actors',
     sub_title: null,
     sub_menu: null,
   },
@@ -150,6 +151,16 @@ function App() {
                         config={config}
                         filmList={filmList}
                         genres={genres}
+                      />
+                    }
+                  />
+                  <Route
+                    path="/movies/genre/:genreName/:id"
+                    element={
+                      <MovieGenre
+                        genres={genres}
+                        config={config}
+                        filmList={filmList}
                       />
                     }
                   />

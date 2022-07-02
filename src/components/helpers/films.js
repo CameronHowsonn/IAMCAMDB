@@ -61,11 +61,10 @@ export async function getFilmGenres() {
   return data
 }
 
-export async function getFilmsByGenre(id, page) {
+export async function getFilmsByGenre(id, page, sortBy) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&with_genres=${id}&page=${page}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${sortBy}&with_genres=${id}&page=${page}`
   )
   const data = await response.json()
-  console.log(data)
   return data
 }
