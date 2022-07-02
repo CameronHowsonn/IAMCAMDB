@@ -81,7 +81,11 @@ const MovieDetail = ({ film, config, genres }) => {
                     return (
                       <span className="film-tags__item" key={`genre--${index}`}>
                         <p>
-                          <Link to={`/search/${genre?.name}`}>
+                          <Link
+                            to={`/movies/genre/${genre.name.toLowerCase()}/${
+                              genre?.id
+                            }`}
+                          >
                             {genre?.name}
                           </Link>
                           <span className="film-tags__item-seperator">

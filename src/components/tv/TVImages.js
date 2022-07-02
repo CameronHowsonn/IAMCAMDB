@@ -19,7 +19,9 @@ const TVImages = ({ id, config }) => {
       <div className="movie-images__inner">
         <header className="movie-images__header">
           <h1 className="movie-images__title big-text">Images</h1>
-          <div className="movie-images__scrollbar"></div>
+          {images?.length > 0 && (
+            <div className="movie-images__scrollbar"></div>
+          )}
         </header>
         {images?.length > 0 ? (
           <Swiper

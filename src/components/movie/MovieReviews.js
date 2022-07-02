@@ -16,6 +16,11 @@ const MovieReviews = ({ config, reviews, filmList }) => {
           )
         })}
       </ul>
+      {reviews?.results?.length === 0 && (
+        <p className="movie-reviews__no-reviews">
+          No reviews yet. Be the first to write one!
+        </p>
+      )}
     </section>
   )
 }
