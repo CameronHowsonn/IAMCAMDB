@@ -101,7 +101,7 @@ const HomepagePopular = ({ config, genres, search }) => {
                 <AddListButton
                   id={currentFilm?.id}
                   icon={'plus'}
-                  disabled={isInList}
+                  disabled={!isInList}
                 />
                 <LinkButton
                   link={`/movie/${currentFilm?.id}`}
