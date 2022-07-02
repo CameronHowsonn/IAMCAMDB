@@ -1,4 +1,11 @@
 const MovieReview = ({ config, review, filmList }) => {
+  if (
+    !review?.author_details?.rating ||
+    !review?.author_details?.name ||
+    review?.content.length > 1000
+  ) {
+    return false
+  }
   return (
     <li>
       <div className="movie-reviews__list--item">
@@ -28,7 +35,11 @@ const MovieReview = ({ config, review, filmList }) => {
           )}
           <div className="movie-review__text">
             {review?.content && (
-              <p className="movie-review__text">{review.content}</p>
+              <p className="movie-review__text">
+                {review.content
+                  .replace(/(?:https?|http):\/\/[\n\S]+/g, '')
+                  .replace(/\*\*(.*?)\*\*/g, '')}
+              </p>
             )}
           </div>
         </div>

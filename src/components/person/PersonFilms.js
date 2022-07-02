@@ -53,13 +53,15 @@ const PersonFilms = ({ id, config }) => {
             >
               <option value="release_date">Release Date</option>
               <option value="title">Title</option>
-              <option value="popularity">Popularity</option>
+              <option value="vote_average">Popularity</option>
             </select>
           </header>
           {sortedMovies?.map(movie => {
             if (!isNaN(movie.release_date)) {
               return false
             }
+
+            console.log(movie.vote_average)
 
             return (
               <div key={movie?.id} className="person__films--single">
