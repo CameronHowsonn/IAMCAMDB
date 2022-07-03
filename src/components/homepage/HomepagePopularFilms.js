@@ -65,7 +65,12 @@ const HomepagePopularFilms = ({
                 const isInList = filmList?.includes(film.id)
                 return (
                   <SwiperSlide key={`movie--${index}`}>
-                    <Film film={film} config={config} isInList={isInList} />
+                    <Film
+                      film={film}
+                      config={config}
+                      isInList={isInList}
+                      type={'movie'}
+                    />
                   </SwiperSlide>
                 )
               })}
