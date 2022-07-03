@@ -11,7 +11,7 @@ const TVShow = ({ film, config, isInList }) => {
       <Link to={`/tv-show/${film.id}`} className="film__link">
         <div className="film__image">
           <img
-            src={`${config.images.base_url}${config.images.profile_sizes[3]}${film.poster_path}`}
+            src={`${config.images.base_url}${config.images.profile_sizes[2]}${film.poster_path}`}
             alt={`${film.title}`}
             loading="lazy"
           />

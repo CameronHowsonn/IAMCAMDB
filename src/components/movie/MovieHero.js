@@ -4,7 +4,7 @@ const MovieHero = ({ path, config, title }) => {
       <div className="movie-hero__bg objFit">
         {path ? (
           <img
-            src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}${path}`}
+            src={`${config?.images?.base_url}${config?.images?.profile_sizes[2]}${path}`}
             alt={`film poster for ${title}`}
             loading="lazy"
           />

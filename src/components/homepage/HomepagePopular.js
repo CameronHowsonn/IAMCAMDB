@@ -12,12 +12,9 @@ const HomepagePopular = ({
   trending = false,
   title,
 }) => {
-  let url
-  if (trending) {
-    url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-  } else {
-    url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-  }
+  const url = trending
+    ? `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    : `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
 
   const [filmData, setFilmData] = useState([])
   const [filmGenres, setFilmGenres] = useState(null)
@@ -79,7 +76,7 @@ const HomepagePopular = ({
             {config && currentFilm && (
               <img
                 className="homepage__popular-image objFit"
-                src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${currentFilm?.backdrop_path}`}
+                src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[1]}${currentFilm?.backdrop_path}`}
                 alt={`${currentFilm?.title}`}
                 loading="eager"
               />

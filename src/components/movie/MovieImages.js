@@ -46,7 +46,7 @@ const MovieImages = ({ id, config }) => {
                 <SwiperSlide key={`${index}-${image.file_path}`}>
                   <img
                     className="movie-images__image"
-                    src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${image?.file_path}`}
+                    src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[1]}${image?.file_path}`}
                     alt={image.file_path}
                     loading="lazy"
                   />

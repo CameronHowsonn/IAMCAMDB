@@ -21,10 +21,12 @@ const HomepagePopularFilms = ({
   const isVisible = useOnScreen(ref)
 
   useEffect(() => {
-    getTrendingFilms(timeframe).then(data =>
-      setFilmData(data.results.splice(0, 16))
-    )
-  }, [timeframe])
+    if (isVisible) {
+      getTrendingFilms(timeframe).then(data =>
+        setFilmData(data.results.splice(0, 16))
+      )
+    }
+  }, [timeframe, isVisible])
 
   if (!config) {
     return

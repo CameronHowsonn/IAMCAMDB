@@ -12,7 +12,7 @@ const MovieDetail = ({ film, config, genres }) => {
         >
           {film.poster_path ? (
             <img
-              src={`${config?.images.base_url}${config?.images?.profile_sizes[3]}${film?.poster_path}`}
+              src={`${config?.images.base_url}${config?.images?.profile_sizes[2]}${film?.poster_path}`}
               alt={`film poster for ${film?.original_title}`}
               loading="lazy"
             />

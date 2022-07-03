@@ -2,8 +2,14 @@
 .movie-genres
   +guttersDouble
   +guttersTopBottomDouble
-  display: flex
-  flex-wrap: wrap
+
+  &__list
+    +guttersTop
+    display: flex
+    flex-wrap: wrap
+    list-style-type: none
+    margin: 0
+    padding: 0
 
   &__genre
     flex: 0 0 calc((100% / 5) - 1em)
