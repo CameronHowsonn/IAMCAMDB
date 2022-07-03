@@ -15,6 +15,7 @@ import Person from './components/pages/Person'
 import Search from './components/pages/Search'
 import TVShow from './components/pages/TVShow'
 import TVShows from './components/pages/TVShows'
+import { ApiContext } from './context/api'
 import ScrollTop from './hooks/scroll-top'
 
 const dataMenu = [
@@ -95,92 +96,94 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <ScrollTop />
-        <header className="header" ref={header}>
-          <FullscreenMenu data={dataMenu} colorIcon="white" header={header} />
-        </header>
-        <main className="main">
-          <div className="main__content">
-            <div className="main__content-content">
-              {config && genres && (
-                <Routes>
-                  <Route
-                    exact
-                    path="/"
-                    element={
-                      <Homepage
-                        config={config}
-                        genres={genres}
-                        filmList={filmList}
-                        tvList={tvList}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/person/:id"
-                    element={<Person config={config} />}
-                  />
-                  <Route
-                    path="/search/:searchTerm"
-                    element={<Search config={config} filmList={filmList} />}
-                  />
-                  <Route
-                    path="/movie/:id"
-                    element={
-                      <Movie
-                        config={config}
-                        filmList={filmList}
-                        genres={genres}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/tv-show/:id"
-                    element={
-                      <TVShow
-                        config={config}
-                        filmList={filmList}
-                        genres={genres}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/movies"
-                    element={
-                      <Movies
-                        config={config}
-                        filmList={filmList}
-                        genres={genres}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/movies/genre/:genreName/:id"
-                    element={
-                      <MovieGenre
-                        genres={genres}
-                        config={config}
-                        filmList={filmList}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/tv-shows"
-                    element={
-                      <TVShows
-                        config={config}
-                        tvList={tvList}
-                        genres={genres}
-                      />
-                    }
-                  />
-                </Routes>
-              )}
+      <ApiContext>
+        <div className="App">
+          <ScrollTop />
+          <header className="header" ref={header}>
+            <FullscreenMenu data={dataMenu} colorIcon="white" header={header} />
+          </header>
+          <main className="main">
+            <div className="main__content">
+              <div className="main__content-content">
+                {config && genres && (
+                  <Routes>
+                    <Route
+                      exact
+                      path="/"
+                      element={
+                        <Homepage
+                          config={config}
+                          genres={genres}
+                          filmList={filmList}
+                          tvList={tvList}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/person/:id"
+                      element={<Person config={config} />}
+                    />
+                    <Route
+                      path="/search/:searchTerm"
+                      element={<Search config={config} filmList={filmList} />}
+                    />
+                    <Route
+                      path="/movie/:id"
+                      element={
+                        <Movie
+                          config={config}
+                          filmList={filmList}
+                          genres={genres}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/tv-show/:id"
+                      element={
+                        <TVShow
+                          config={config}
+                          filmList={filmList}
+                          genres={genres}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/movies"
+                      element={
+                        <Movies
+                          config={config}
+                          filmList={filmList}
+                          genres={genres}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/movies/genre/:genreName/:id"
+                      element={
+                        <MovieGenre
+                          genres={genres}
+                          config={config}
+                          filmList={filmList}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/tv-shows"
+                      element={
+                        <TVShows
+                          config={config}
+                          tvList={tvList}
+                          genres={genres}
+                        />
+                      }
+                    />
+                  </Routes>
+                )}
+              </div>
             </div>
-          </div>
-        </main>
-      </div>
+          </main>
+        </div>
+      </ApiContext>
     </Router>
   )
 }
