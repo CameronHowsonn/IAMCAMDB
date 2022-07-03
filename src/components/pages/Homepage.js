@@ -7,7 +7,12 @@ import HomepagePopularTV from '../homepage/HomepagePopularTV'
 const Homepage = ({ config, genres, filmList, tvList }) => {
   return (
     <>
-      <HomepagePopular config={config} genres={genres} />
+      <HomepagePopular
+        config={config}
+        genres={genres}
+        search={true}
+        title={'Most Popular'}
+      />
       <HomepagePopularPeople config={config} />
       {filmList && (
         <>

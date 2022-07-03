@@ -4,7 +4,12 @@ import MovieGenres from '../movies/MoviesGenres'
 const Movies = ({ config, genres }) => {
   return (
     <section className="movies">
-      <HomepagePopular config={config} search={false} />
+      <HomepagePopular
+        config={config}
+        search={false}
+        trending={true}
+        title={'Trending Today'}
+      />
       <MovieGenres genres={genres} />
     </section>
   )

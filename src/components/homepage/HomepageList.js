@@ -10,6 +10,7 @@ import Film from '../Film'
 import { getFilmById } from '../helpers/films.js'
 import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
 import { getTVShowById } from '../helpers/tv-shows'
+import TVShow from '../TVShow'
 
 const HomepageList = ({
   config,
@@ -98,14 +99,24 @@ const HomepageList = ({
                   type === 'movie'
                     ? filmList?.includes(film.id)
                     : tvList.includes(film.id)
+
                 return (
                   <SwiperSlide key={`movie--${index}`}>
-                    <Film
-                      film={film}
-                      config={config}
-                      isInList={isInList}
-                      type={type}
-                    />
+                    {type == 'movie' ? (
+                      <Film
+                        film={film}
+                        config={config}
+                        isInList={isInList}
+                        type={type}
+                      />
+                    ) : (
+                      <TVShow
+                        film={film}
+                        config={config}
+                        isInList={isInList}
+                        type={type}
+                      />
+                    )}
                   </SwiperSlide>
                 )
               })}

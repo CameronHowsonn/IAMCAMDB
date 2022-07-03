@@ -3,20 +3,14 @@ import { FaLongArrowAltLeft, FaLongArrowAltRight, FaStar } from 'react-icons/fa'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import { isFilmInList } from '../helpers/localStorage'
-import HeroSearch from './HeroSearch'
+import HeroSearch from '../homepage/HeroSearch'
 
-const HomepagePopular = ({
-  config,
-  genres,
-  search,
-  trending = false,
-  title,
-}) => {
+const PopularTV = ({ config, genres, search, trending = false, title }) => {
   let url
   if (trending) {
-    url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   } else {
-    url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    url = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   }
 
   const [filmData, setFilmData] = useState([])
@@ -80,7 +74,7 @@ const HomepagePopular = ({
               <img
                 className="homepage__popular-image objFit"
                 src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${currentFilm?.backdrop_path}`}
-                alt={`${currentFilm?.title}`}
+                alt={`${currentFilm?.name}`}
                 loading="eager"
               />
             )}
@@ -89,15 +83,15 @@ const HomepagePopular = ({
                 {currentFilm?.vote_average && (
                   <h2 className="homepage__popular-details--stars">
                     <FaStar />
-                    {currentFilm?.vote_average}
+                    {currentFilm?.vote_average.toFixed(1)}
                   </h2>
                 )}
 
-                {currentFilm?.original_title && (
+                {currentFilm?.name && (
                   <>
                     <h5>{title}</h5>
                     <h1 className="homepage__popular-details-title big-text">
-                      {currentFilm?.original_title}
+                      {currentFilm?.name}
                     </h1>
                   </>
                 )}
@@ -128,7 +122,7 @@ const HomepagePopular = ({
                   setElementIndex={setElementIndex}
                 />
                 <LinkButton
-                  link={`/movie/${currentFilm?.id}`}
+                  link={`/tv-show/${currentFilm?.id}`}
                   text={'Learn More'}
                   buttonStyle="yellow"
                 />
@@ -160,4 +154,4 @@ const HomepagePopular = ({
   )
 }
 
-export default HomepagePopular
+export default PopularTV

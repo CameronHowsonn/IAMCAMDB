@@ -27,7 +27,7 @@ export async function removeFilm(id) {
   window.dispatchEvent(event)
 }
 
-export async function isFilmInList(id) {
+export async function isFilmInList(id, name) {
   const currentFilms = localStorage.getItem('filmList')
   const filmList = currentFilms ? JSON.parse(currentFilms) : []
   return filmList.includes(id)
