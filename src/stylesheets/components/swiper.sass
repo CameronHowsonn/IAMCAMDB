@@ -7,9 +7,13 @@
 .similar-swiper
   background-color: rgba($white, 0.65) !important
   border-radius: 0.25em !important
+  display: none !important
   height: 7px !important
   position: relative !important
   width: 33vw !important
+  @media (min-width: $tablet)
+    display: block !important
+
   .swiper-scrollbar-drag
     background-color: $white !important
     height: 14px !important

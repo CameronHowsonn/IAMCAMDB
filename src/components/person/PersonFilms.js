@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import MobileCheck from '../../hooks/mobile-check.js'
 import LinkButton from '../Buttons/LinkButton.js'
 import { getMoviesFromPerson } from '../helpers/person.js'
 
 const PersonFilms = ({ id, config }) => {
+  const mobileCheck = MobileCheck()
   const [movies, setMovies] = useState([
     {
       cast: [],
@@ -66,21 +68,23 @@ const PersonFilms = ({ id, config }) => {
             return (
               <div key={movie?.id} className="person__films--single">
                 <Link to={`/movie/${movie?.id}`}>
-                  <p className="person__films--single-star">
-                    <>
-                      <FaStar />
-                      {movie?.vote_average > 0
-                        ? movie?.vote_average?.toFixed(1)
-                        : '?'}
-                    </>
-                  </p>
+                  {!mobileCheck && (
+                    <p className="person__films--single-star">
+                      <>
+                        <FaStar />
+                        {movie?.vote_average > 0
+                          ? movie?.vote_average?.toFixed(1)
+                          : '?'}
+                      </>
+                    </p>
+                  )}
                   <p className="person__films--single-title">
                     {movie?.title?.split(' ').splice(0, 5).join(' ')}
                     {movie?.title?.split(' ').splice(0, 3).length > 5 && '...'}
                     {movie?.character && <span>{movie.character}</span>}
                   </p>
                 </Link>
-                {movie?.release_date && (
+                {movie?.release_date && !mobileCheck && (
                   <p className="person__film--single-date">
                     {' '}
                     {new Date(movie.release_date)

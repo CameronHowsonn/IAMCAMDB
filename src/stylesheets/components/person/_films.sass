@@ -43,10 +43,12 @@
 
     &-star
       align-items: center
-      display: flex
+      display: none
       flex: 0 0 4em
       justify-content: center
       margin-right: 1em
+      @media (min-width: $tablet)
+        display: flex
 
       svg
         margin-right: 0.5em

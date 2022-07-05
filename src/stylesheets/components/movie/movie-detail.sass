@@ -33,6 +33,19 @@
       margin: 1em 0
       opacity: 0.6
       width: 100%
+      @media (max-width: $desktop - 1px)
+        align-items: center
+        flex-wrap: wrap
+        justify-content: center
+        text-align: center
+
+      &-item
+        @media (max-width: $desktop - 1px)
+          flex: 0 0 100%
+
+        .film-tags
+          @media (max-width: $desktop - 1px)
+            justify-content: center
 
   &__image
     @media (min-width: $desktop)
@@ -44,7 +57,8 @@
       height: auto
       position: relative
       top: -30%
-      width: 80%
+      @media (min-width: $desktop)
+        width: 80%
 
       .no-image &
         @media (min-width: $desktop)
@@ -64,7 +78,6 @@
       .no-image &
         @media (min-width: $desktop)
           top: 0
-
       &--money
         +guttersTop
         display: flex
