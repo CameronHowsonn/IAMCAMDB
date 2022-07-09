@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
 import { getFilmGenres } from './components/helpers/films'
-import { getTvShowList } from './components/helpers/localStorage.js'
 import { FullscreenMenu } from './components/Navigation'
 import Homepage from './components/pages/Homepage'
 import Movie from './components/pages/Movie'
@@ -61,22 +60,6 @@ function App() {
     }
   }, [])
 
-  const [tvList, setTVList] = useState(null)
-
-  useEffect(() => {
-    const getShows = async () => {
-      getTvShowList().then(list => setTVList(list))
-    }
-    getShows()
-
-    window.addEventListener('localStorageAdd', () => getShows())
-    window.addEventListener('localStorageRemove', () => getShows())
-    return () => {
-      window.removeEventListener('localStorageAdd', getShows())
-      window.removeEventListener('localStorageRemove', getShows())
-    }
-  }, [])
-
   return (
     <Router>
       <ApiContext>
@@ -90,11 +73,7 @@ function App() {
               <div className="main__content-content">
                 {genres && (
                   <Routes>
-                    <Route
-                      exact
-                      path="/"
-                      element={<Homepage tvList={tvList} />}
-                    />
+                    <Route exact path="/" element={<Homepage />} />
                     <Route path="/person/:id" element={<Person />} />
                     <Route path="/search/:searchTerm" element={<Search />} />
                     <Route path="/movie/:id" element={<Movie />} />
@@ -104,10 +83,7 @@ function App() {
                       path="/movies/genre/:genreName/:id"
                       element={<MovieGenre />}
                     />
-                    <Route
-                      path="/tv-shows"
-                      element={<TVShows tvList={tvList} />}
-                    />
+                    <Route path="/tv-shows" element={<TVShows />} />
                   </Routes>
                 )}
               </div>

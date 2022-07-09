@@ -14,12 +14,12 @@ import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
 import { getTVShowById } from '../helpers/tv-shows'
 import TVShow from '../TVShow'
 
-const HomepageList = ({ swiperClass, title, type, tvList }) => {
+const HomepageList = ({ swiperClass, title, type }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState([])
   const ref = useRef()
   const isVisible = useOnScreen(ref)
-  const { config, filmList } = useAPI()
+  const { config, filmList, tvList } = useAPI()
 
   useEffect(() => {
     const getFilms = async () => {
@@ -37,26 +37,26 @@ const HomepageList = ({ swiperClass, title, type, tvList }) => {
     if (isVisible) {
       if (type === 'movie') {
         getFilms()
-        window.addEventListener('localStorageAdd', () => getFilms())
-        window.addEventListener('localStorageRemove', () => getFilms())
+        window.addEventListener('localStorageAddFilm', () => getFilms())
+        window.addEventListener('localStorageRemoveFilm', () => getFilms())
       }
 
       if (type === 'tv') {
         getShows()
-        window.addEventListener('localStorageAdd', () => getShows())
-        window.addEventListener('localStorageRemove', () => getShows())
+        window.addEventListener('localStorageAddTV', () => getShows())
+        window.addEventListener('localStorageRemoveTV', () => getShows())
       }
     }
 
     return () => {
       if (type === 'movie') {
-        window.removeEventListener('localStorageAdd', getFilms())
-        window.removeEventListener('localStorageRemove', getFilms())
+        window.removeEventListener('localStorageAddFilm', getFilms())
+        window.removeEventListener('localStorageRemoveFilm', getFilms())
       }
 
       if (type === 'tv') {
-        window.removeEventListener('localStorageAdd', getShows())
-        window.removeEventListener('localStorageRemove', getShows())
+        window.removeEventListener('localStorageAddTV', getShows())
+        window.removeEventListener('localStorageRemoveTV', getShows())
       }
     }
   }, [type, isVisible])

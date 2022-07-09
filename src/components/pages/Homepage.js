@@ -28,12 +28,10 @@ const Homepage = ({ tvList }) => {
         <HomepagePopularTV
           title="Trending TV Shows"
           swiperClass={'trending-tv-swiper'}
-          tvList={tvList}
         />
         <HomepageList
           title="Shows From Your List"
           swiperClass={'your-list-swiper'}
-          tvList={tvList}
           type="tv"
         />
       </>

@@ -15,7 +15,7 @@ export async function addFilm(id) {
   }
   localStorage.setItem('filmList', JSON.stringify(filmList))
   console.log('added')
-  const event = new Event('localStorageAdd')
+  const event = new Event('localStorageAddFilm')
   window.dispatchEvent(event)
 }
 
@@ -25,7 +25,7 @@ export async function removeFilm(id) {
   const newFilmList = filmList.filter(film => film !== id)
   localStorage.setItem('filmList', JSON.stringify(newFilmList))
   console.log('removed')
-  const event = new Event('localStorageRemove')
+  const event = new Event('localStorageRemoveFilm')
   window.dispatchEvent(event)
 }
 
@@ -50,7 +50,7 @@ export async function addShow(id) {
     return false
   }
   localStorage.setItem('showList', JSON.stringify(showList))
-  const event = new Event('localStorageAdd')
+  const event = new Event('localStorageAddTV')
   window.dispatchEvent(event)
 }
 
@@ -59,6 +59,6 @@ export async function removeShow(id) {
   const showList = currentShows ? JSON.parse(currentShows) : []
   const newShowList = showList.filter(show => show !== id)
   localStorage.setItem('showList', JSON.stringify(newShowList))
-  const event = new Event('localStorageRemove')
+  const event = new Event('localStorageRemoveTV')
   window.dispatchEvent(event)
 }

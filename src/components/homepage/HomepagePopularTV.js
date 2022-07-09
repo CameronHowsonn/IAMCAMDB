@@ -9,12 +9,12 @@ import useOnScreen from '../../hooks/on-screen'
 import { getPopularTvShows } from '../helpers/tv-shows.js'
 import TVShow from '../TVShow'
 
-const HomepagePopularTV = ({ swiperClass, title, tvList, films }) => {
+const HomepagePopularTV = ({ swiperClass, title, films }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
   const ref = useRef()
   const isVisible = useOnScreen(ref)
-  const { config } = useAPI()
+  const { config, tvList } = useAPI()
 
   useEffect(() => {
     if (films && isVisible) {
