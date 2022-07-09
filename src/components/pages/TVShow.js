@@ -19,7 +19,7 @@ const TVShow = ({ config }) => {
 
   return (
     <div className="tv-show container">
-      {show && <TVHero show={show} />}
+      {show && <TVHero show={show} id={id} />}
       {show && <TVDetail show={show} />}
       {show && <TVCredits id={id} />}
       {show && <TVImages id={id} />}

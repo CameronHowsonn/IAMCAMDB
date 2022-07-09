@@ -23,7 +23,9 @@ const AddListButton = ({
         } else {
           disabled ? removeShow(id) : addShow(id)
         }
-        setElementIndex(index => index + 1)
+        if (setElementIndex) {
+          setElementIndex(index => index + 1)
+        }
       }}
     >
       <span className="add-list-button__icon">

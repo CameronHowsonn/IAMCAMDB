@@ -73,7 +73,7 @@ const HomepageList = ({ swiperClass, title, type }) => {
             {title && <h1 className="big-text">{title}</h1>}
             {swiperClass && <div className={swiperClass}></div>}
           </div>
-          {filmData?.length > 0 ? (
+          {swiperClass && filmData?.length > 0 ? (
             <Swiper
               modules={[Navigation, Scrollbar]}
               slidesPerView={mobileCheck ? 1.25 : 6.75}

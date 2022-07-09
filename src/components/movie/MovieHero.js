@@ -1,7 +1,10 @@
+import { useParams } from 'react-router-dom'
 import { useAPI } from '../../context/api'
+import AddListButton from '../Buttons/AddListButton'
 
 const MovieHero = ({ path, title }) => {
-  const { config } = useAPI()
+  const { config, filmList } = useAPI()
+  const { id } = useParams()
 
   return (
     <section className={`movie-hero ${path ? 'image' : 'no-image'}`}>
@@ -14,6 +17,16 @@ const MovieHero = ({ path, title }) => {
           />
         ) : (
           <h1>No Image Available</h1>
+        )}
+      </div>
+      <div className="movie-hero__buttons">
+        {id && (
+          <AddListButton
+            id={id}
+            icon={'plus'}
+            type="movie"
+            disabled={filmList?.includes(id)}
+          />
         )}
       </div>
     </section>

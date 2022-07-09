@@ -4,7 +4,7 @@ import HomepagePopularFilms from '../homepage/HomepagePopularFilms'
 import HomepagePopularPeople from '../homepage/HomepagePopularPeople'
 import HomepagePopularTV from '../homepage/HomepagePopularTV'
 
-const Homepage = ({ tvList }) => {
+const Homepage = () => {
   return (
     <>
       <HomepagePopular search={true} title={'Most Popular'} />

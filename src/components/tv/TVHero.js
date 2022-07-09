@@ -1,7 +1,8 @@
 import { useAPI } from '../../context/api'
+import AddListButton from '../Buttons/AddListButton'
 
 const TVHero = ({ id, show }) => {
-  const { config } = useAPI()
+  const { config, tvList } = useAPI()
 
   return (
     <section className={`person-hero`}>
@@ -14,6 +15,16 @@ const TVHero = ({ id, show }) => {
           />
         ) : (
           <h1>No Image Available</h1>
+        )}
+      </div>
+      <div className="person-hero__buttons">
+        {id && (
+          <AddListButton
+            id={id}
+            icon={'plus'}
+            type="tv"
+            disabled={tvList.includes(id)}
+          />
         )}
       </div>
     </section>
