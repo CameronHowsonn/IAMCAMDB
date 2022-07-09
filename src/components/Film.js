@@ -27,7 +27,7 @@ const Film = ({ film, isInList, type }) => {
             <div className="film__image">
               {film.poster_path ? (
                 <Image
-                  src={`${config?.images?.base_url}${config?.images?.profile_sizes[2]}${film?.poster_path}`}
+                  src={`${config?.images?.base_url}${config?.images?.profile_sizes[1]}${film?.poster_path}`}
                   alt={`${film.title}`}
                   loading="lazy"
                 />

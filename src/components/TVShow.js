@@ -14,7 +14,7 @@ const TVShow = ({ film, isInList }) => {
       <Link to={`/tv-show/${film.id}`} className="film__link">
         <div className="film__image">
           <Image
-            src={`${config.images.base_url}${config.images.profile_sizes[2]}${film.poster_path}`}
+            src={`${config.images.base_url}${config.images.profile_sizes[1]}${film.poster_path}`}
             alt={`${film.title}`}
           />
         </div>
