@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaStar } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
@@ -59,10 +60,12 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
     currentFilm?.genre_ids?.map(ids => {
       genres.genres.map(genre => {
         if (genre.id === ids) {
-          gen.push(genre.name)
-          return genre.name
+          gen.push(genre)
+          return genre
         }
+        return null
       })
+      return null
     })
     setFilmGenres(gen)
   }, [genres, currentFilm])
@@ -104,10 +107,16 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
                     return (
                       <span className="film-tags__item" key={`genre--${index}`}>
                         <p>
-                          {genre}
-                          <span className="film-tags__item-seperator">
-                            {index === filmGenres?.length - 1 ? '' : ', '}
-                          </span>
+                          <Link
+                            to={`/movies/genre/${genre.name.toLowerCase()}/${
+                              genre.id
+                            }`}
+                          >
+                            {genre.name}
+                            <span className="film-tags__item-seperator">
+                              {index === filmGenres?.length - 1 ? '' : ', '}
+                            </span>
+                          </Link>
                         </p>
                       </span>
                     )
