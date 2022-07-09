@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getFilmCredits } from '../helpers/films'
 import MoviePerson from './MoviePerson'
 
-const MovieCredits = ({ config, id }) => {
+const MovieCredits = ({ id }) => {
   const [credits, setCredits] = useState([])
   const [currentCredits, setCurrentCredits] = useState([])
   const [index, setIndex] = useState(10)
@@ -34,7 +34,7 @@ const MovieCredits = ({ config, id }) => {
                   cast.profile_path ? 'has-profile' : 'no-profile'
                 }`}
               >
-                <MoviePerson person={cast} config={config} />
+                <MoviePerson person={cast} />
               </li>
             ))
           ) : (

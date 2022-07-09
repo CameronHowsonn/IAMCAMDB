@@ -3,15 +3,17 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import { getFilmImages } from '../helpers/films'
 import useOnScreen from './../../hooks/on-screen'
 
-const MovieImages = ({ id, config }) => {
+const MovieImages = ({ id }) => {
   const mobileCheck = MobileCheck()
   const [images, setImages] = useState([])
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   useLayoutEffect(() => {
     getFilmImages(id).then(data => setImages(data.backdrops))

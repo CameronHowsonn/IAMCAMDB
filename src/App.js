@@ -40,20 +40,8 @@ const dataMenu = [
 ]
 
 function App() {
-  const [config, setConfig] = useState(null)
   const [genres, setGenres] = useState(null)
   const header = useRef()
-
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/configuration?api_key=${process.env.REACT_APP_API_KEY}`
-    )
-      .then(response => response.json())
-      .then(data => {
-        setConfig(data)
-        return data
-      })
-  }, [])
 
   useEffect(() => {
     getFilmGenres().then(data => setGenres(data))
@@ -105,77 +93,45 @@ function App() {
           <main className="main">
             <div className="main__content">
               <div className="main__content-content">
-                {config && genres && (
+                {genres && (
                   <Routes>
                     <Route
                       exact
                       path="/"
                       element={
                         <Homepage
-                          config={config}
                           genres={genres}
                           filmList={filmList}
                           tvList={tvList}
                         />
                       }
                     />
-                    <Route
-                      path="/person/:id"
-                      element={<Person config={config} />}
-                    />
+                    <Route path="/person/:id" element={<Person />} />
                     <Route
                       path="/search/:searchTerm"
-                      element={<Search config={config} filmList={filmList} />}
+                      element={<Search filmList={filmList} />}
                     />
                     <Route
                       path="/movie/:id"
-                      element={
-                        <Movie
-                          config={config}
-                          filmList={filmList}
-                          genres={genres}
-                        />
-                      }
+                      element={<Movie filmList={filmList} genres={genres} />}
                     />
                     <Route
                       path="/tv-show/:id"
-                      element={
-                        <TVShow
-                          config={config}
-                          filmList={filmList}
-                          genres={genres}
-                        />
-                      }
+                      element={<TVShow filmList={filmList} genres={genres} />}
                     />
                     <Route
                       path="/movies"
-                      element={
-                        <Movies
-                          config={config}
-                          filmList={filmList}
-                          genres={genres}
-                        />
-                      }
+                      element={<Movies filmList={filmList} genres={genres} />}
                     />
                     <Route
                       path="/movies/genre/:genreName/:id"
                       element={
-                        <MovieGenre
-                          genres={genres}
-                          config={config}
-                          filmList={filmList}
-                        />
+                        <MovieGenre genres={genres} filmList={filmList} />
                       }
                     />
                     <Route
                       path="/tv-shows"
-                      element={
-                        <TVShows
-                          config={config}
-                          tvList={tvList}
-                          genres={genres}
-                        />
-                      }
+                      element={<TVShows tvList={tvList} genres={genres} />}
                     />
                   </Routes>
                 )}

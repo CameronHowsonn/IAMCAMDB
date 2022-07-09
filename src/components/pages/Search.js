@@ -35,7 +35,6 @@ const Search = ({ config, filmList }) => {
           results={results}
           totalPages={totalPages}
           filmList={filmList}
-          config={config}
         />
       )}
 

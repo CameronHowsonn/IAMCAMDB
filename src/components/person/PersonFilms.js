@@ -5,7 +5,7 @@ import MobileCheck from '../../hooks/mobile-check.js'
 import LinkButton from '../Buttons/LinkButton.js'
 import { getMoviesFromPerson } from '../helpers/person.js'
 
-const PersonFilms = ({ id, config }) => {
+const PersonFilms = ({ id }) => {
   const mobileCheck = MobileCheck()
   const [movies, setMovies] = useState([
     {

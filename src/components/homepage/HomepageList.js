@@ -5,6 +5,7 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import useOnScreen from '../../hooks/on-screen'
 import Film from '../Film'
@@ -13,18 +14,12 @@ import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
 import { getTVShowById } from '../helpers/tv-shows'
 import TVShow from '../TVShow'
 
-const HomepageList = ({
-  config,
-  swiperClass,
-  title,
-  filmList,
-  type,
-  tvList,
-}) => {
+const HomepageList = ({ swiperClass, title, filmList, type, tvList }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState([])
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   useEffect(() => {
     const getFilms = async () => {
@@ -109,19 +104,9 @@ const HomepageList = ({
                   return (
                     <SwiperSlide key={`movie--${index}`}>
                       {type === 'movie' ? (
-                        <Film
-                          film={film}
-                          config={config}
-                          isInList={isInList}
-                          type={type}
-                        />
+                        <Film film={film} isInList={isInList} type={type} />
                       ) : (
-                        <TVShow
-                          film={film}
-                          config={config}
-                          isInList={isInList}
-                          type={type}
-                        />
+                        <TVShow film={film} isInList={isInList} type={type} />
                       )}
                     </SwiperSlide>
                   )

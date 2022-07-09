@@ -3,22 +3,18 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import Film from '../Film'
 import { getTrendingFilms } from '../helpers/films'
 import useOnScreen from './../../hooks/on-screen'
 
-const HomepagePopularFilms = ({
-  config,
-  swiperClass,
-  title,
-  timeframe,
-  filmList,
-}) => {
+const HomepagePopularFilms = ({ swiperClass, title, timeframe, filmList }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   useEffect(() => {
     if (isVisible) {
@@ -65,12 +61,7 @@ const HomepagePopularFilms = ({
                 const isInList = filmList?.includes(film.id)
                 return (
                   <SwiperSlide key={`movie--${index}`}>
-                    <Film
-                      film={film}
-                      config={config}
-                      isInList={isInList}
-                      type={'movie'}
-                    />
+                    <Film film={film} isInList={isInList} type={'movie'} />
                   </SwiperSlide>
                 )
               })}

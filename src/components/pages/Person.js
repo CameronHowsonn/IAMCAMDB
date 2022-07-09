@@ -5,7 +5,7 @@ import PersonDetail from '../person/PersonDetail'
 import PersonFilms from '../person/PersonFilms'
 import PersonHero from '../person/PersonHero.js'
 
-const Person = ({ config }) => {
+const Person = () => {
   let { id } = useParams()
   const [person, setPerson] = useState(null)
 
@@ -15,9 +15,9 @@ const Person = ({ config }) => {
 
   return (
     <div className="person container">
-      {id && <PersonHero config={config} id={id} />}
-      {person && <PersonDetail person={person} config={config} />}
-      {id && <PersonFilms id={id} config={config} />}
+      {id && <PersonHero id={id} />}
+      {person && <PersonDetail person={person} />}
+      {id && <PersonFilms id={id} />}
     </div>
   )
 }

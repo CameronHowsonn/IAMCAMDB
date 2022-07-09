@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaStar } from 'react-icons/fa'
+import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import { isFilmInList } from '../helpers/localStorage'
 import HeroSearch from '../homepage/HeroSearch'
 
-const PopularTV = ({ config, genres, search, trending = false, title }) => {
+const PopularTV = ({ genres, search, trending = false, title }) => {
   let url
   if (trending) {
     url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
@@ -19,6 +20,7 @@ const PopularTV = ({ config, genres, search, trending = false, title }) => {
   const [currentFilm, setCurrentFilm] = useState(null)
   const [isInList, setIsInList] = useState(false)
   const [elementIndex, setElementIndex] = useState(0)
+  const { config } = useAPI()
 
   useLayoutEffect(() => {
     const getData = async () => {

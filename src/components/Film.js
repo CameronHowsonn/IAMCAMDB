@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { FaMinus, FaPlus, FaQuestionCircle, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useAPI } from '../context/api.js'
 import useOnScreen from '../hooks/on-screen.js'
 import {
   addFilm,
@@ -9,9 +10,10 @@ import {
   removeShow,
 } from './helpers/localStorage.js'
 
-const Film = ({ film, config, isInList, type }) => {
+const Film = ({ film, isInList, type }) => {
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   return (
     <div className="objFit film__container" ref={ref}>

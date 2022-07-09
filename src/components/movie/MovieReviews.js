@@ -7,12 +7,7 @@ const MovieReviews = ({ config, reviews, filmList }) => {
       <ul className="movie-reviews__list">
         {reviews?.results?.map(review => {
           return (
-            <MovieReview
-              key={review.id}
-              config={config}
-              review={review}
-              filmList={filmList}
-            />
+            <MovieReview key={review.id} review={review} filmList={filmList} />
           )
         })}
       </ul>

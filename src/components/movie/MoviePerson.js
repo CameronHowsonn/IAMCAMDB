@@ -1,6 +1,9 @@
 import { FaUserSlash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-const MoviePerson = ({ person, config }) => {
+import { useAPI } from '../../context/api'
+
+const MoviePerson = ({ person }) => {
+  const { config } = useAPI()
   return (
     <Link
       to={`/person/${person.id}`}

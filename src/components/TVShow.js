@@ -1,8 +1,10 @@
 import { FaMinus, FaPlus, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useAPI } from '../context/api.js'
 import { addShow, removeShow } from './helpers/localStorage.js'
 
-const TVShow = ({ film, config, isInList }) => {
+const TVShow = ({ film, isInList }) => {
+  const { config } = useAPI()
   if (!film.poster_path) {
     return false
   }

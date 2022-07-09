@@ -12,12 +12,7 @@ const SearchResutls = ({ results, config, filmList }) => {
           }
           return (
             <li className="search-results__list__item" key={film?.id}>
-              <Film
-                film={film}
-                config={config}
-                isInList={isInList}
-                type="movie"
-              />
+              <Film film={film} isInList={isInList} type="movie" />
             </li>
           )
         })}

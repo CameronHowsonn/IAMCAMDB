@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { useAPI } from '../../context/api'
 import { getOneTaggedPhoto } from '../helpers/person'
 
-const PersonHero = ({ config, id }) => {
+const PersonHero = ({ id }) => {
   const [image, setImage] = useState(false)
+  const { config } = useAPI()
 
   useEffect(() => {
     getOneTaggedPhoto(id).then(data => setImage(data))

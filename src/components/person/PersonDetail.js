@@ -1,7 +1,10 @@
 import { FaBirthdayCake } from 'react-icons/fa'
+import { useAPI } from '../../context/api'
 import PersonLinks from './PersonLinks'
 
-const PersonDetail = ({ person, config }) => {
+const PersonDetail = ({ person }) => {
+  const { config } = useAPI()
+
   return (
     <section className="person-detail">
       <div className="person-detail__inner">

@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useAPI } from '../../context/api'
 import MovieStar from '../movie/MovieStars'
 
-const MovieDetail = ({ show, config, genres }) => {
+const MovieDetail = ({ show, genres }) => {
+  const { config } = useAPI()
+
   return (
     <section className="movie-detail">
       <div className="movie-detail__inner">

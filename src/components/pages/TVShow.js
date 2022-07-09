@@ -19,13 +19,12 @@ const TVShow = ({ config, filmList }) => {
 
   return (
     <div className="tv-show container">
-      {show && <TVHero config={config} show={show} />}
-      {show && <TVDetail show={show} config={config} />}
-      {show && <TVCredits id={id} config={config} />}
-      {show && <TVImages id={id} config={config} />}
+      {show && <TVHero show={show} />}
+      {show && <TVDetail show={show} />}
+      {show && <TVCredits id={id} />}
+      {show && <TVImages id={id} />}
       {config && filmList && similarShows && (
         <HomepagePopularTV
-          config={config}
           title="Similar TV Shows"
           timeframe={'day'}
           swiperClass={'similar-swiper'}

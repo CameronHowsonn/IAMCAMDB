@@ -1,4 +1,8 @@
-const MovieHero = ({ path, config, title }) => {
+import { useAPI } from '../../context/api'
+
+const MovieHero = ({ path, title }) => {
+  const { config } = useAPI()
+
   return (
     <section className={`movie-hero ${path ? 'image' : 'no-image'}`}>
       <div className="movie-hero__bg objFit">

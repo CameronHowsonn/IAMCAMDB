@@ -1,12 +1,12 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaStar } from 'react-icons/fa'
+import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import { isFilmInList } from '../helpers/localStorage'
 import HeroSearch from './HeroSearch'
 
 const HomepagePopular = ({
-  config,
   genres,
   search,
   trending = false,
@@ -23,6 +23,7 @@ const HomepagePopular = ({
   const [currentFilm, setCurrentFilm] = useState(null)
   const [isInList, setIsInList] = useState(false)
   const [elementIndex, setElementIndex] = useState(0)
+  const { config } = useAPI()
 
   useLayoutEffect(() => {
     const getData = async () => {

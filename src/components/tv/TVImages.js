@@ -3,12 +3,14 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import { getTVShowImages } from '../helpers/tv-shows'
 
-const TVImages = ({ id, config }) => {
+const TVImages = ({ id }) => {
   const mobileCheck = MobileCheck()
   const [images, setImages] = useState([])
+  const { config } = useAPI()
 
   useLayoutEffect(() => {
     getTVShowImages(id).then(data => setImages(data.backdrops))

@@ -1,4 +1,8 @@
-const TVHero = ({ config, id, show }) => {
+import { useAPI } from '../../context/api'
+
+const TVHero = ({ id, show }) => {
+  const { config } = useAPI()
+
   return (
     <section className={`person-hero`}>
       <div className="person-hero__bg objFit">

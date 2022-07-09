@@ -7,7 +7,7 @@ import MovieDetail from '../movie/MovieDetail'
 import MovieHero from '../movie/MovieHero'
 import MovieImages from '../movie/MovieImages.js'
 import MovieReviews from '../movie/MovieReviews.js'
-const Movie = ({ config, filmList, genres }) => {
+const Movie = ({ filmList, genres }) => {
   const { id } = useParams()
   const [film, setFilm] = useState([])
   const [similarFilms, setSimilarFilms] = useState([])
@@ -21,24 +21,14 @@ const Movie = ({ config, filmList, genres }) => {
 
   return (
     <div className={`${film.poster_path ? 'image' : 'no-image'}`}>
-      <MovieHero
-        path={film.backdrop_path}
-        config={config}
-        title={film.original_title}
-      />
+      <MovieHero path={film.backdrop_path} title={film.original_title} />
       {film && filmList && (
-        <MovieDetail
-          film={film}
-          filmList={filmList}
-          config={config}
-          genres={genres}
-        />
+        <MovieDetail film={film} filmList={filmList} genres={genres} />
       )}
-      {config && id && <MovieCredits config={config} id={id} />}
-      {config && id && <MovieImages config={config} id={id} />}
-      {config && id && filmList && similarFilms && (
+      {id && <MovieCredits id={id} />}
+      {id && <MovieImages id={id} />}
+      {id && filmList && similarFilms && (
         <HomepagePopularFilms
-          config={config}
           title="Similar Movies"
           timeframe={'day'}
           swiperClass={'similar-swiper'}
@@ -47,7 +37,7 @@ const Movie = ({ config, filmList, genres }) => {
         />
       )}
       {reviews?.results?.length > 0 && (
-        <MovieReviews config={config} reviews={reviews} filmList={filmList} />
+        <MovieReviews reviews={reviews} filmList={filmList} />
       )}
     </div>
   )

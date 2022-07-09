@@ -4,15 +4,17 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import useOnScreen from '../../hooks/on-screen'
 import { getListOfPeople } from '../helpers/person.js'
 
-const HomepagePopularPeople = ({ config }) => {
+const HomepagePopularPeople = () => {
   const mobileCheck = MobileCheck()
   const [personData, setPersonData] = useState(null)
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   useEffect(() => {
     const getData = async () => {
@@ -23,10 +25,6 @@ const HomepagePopularPeople = ({ config }) => {
       getData()
     }
   }, [isVisible])
-
-  if (!config) {
-    return
-  }
 
   return (
     <div className="homepage__popular-people" ref={ref}>

@@ -3,16 +3,18 @@ import { Navigation, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import useOnScreen from '../../hooks/on-screen'
 import { getPopularTvShows } from '../helpers/tv-shows.js'
 import TVShow from '../TVShow'
 
-const HomepagePopularTV = ({ config, swiperClass, title, tvList, films }) => {
+const HomepagePopularTV = ({ swiperClass, title, tvList, films }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
   const ref = useRef()
   const isVisible = useOnScreen(ref)
+  const { config } = useAPI()
 
   useEffect(() => {
     if (films && isVisible) {
@@ -60,7 +62,7 @@ const HomepagePopularTV = ({ config, swiperClass, title, tvList, films }) => {
                 const isInList = tvList?.includes(film.id)
                 return (
                   <SwiperSlide key={`tv-show--${index}`}>
-                    <TVShow film={film} config={config} isInList={isInList} />
+                    <TVShow film={film} isInList={isInList} />
                   </SwiperSlide>
                 )
               })}
