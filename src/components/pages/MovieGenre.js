@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useAPI } from '../../context/api'
 import Film from '../Film'
 import { getFilmsByGenre } from '../helpers/films'
+import SortSelect from '../SortSelect'
 
 const MovieGenre = () => {
   const { id, genreName } = useParams()
@@ -24,21 +25,7 @@ const MovieGenre = () => {
               Movies under {genreName}
             </h1>
           )}
-
-          <select
-            name="sort-by"
-            id="sort-by"
-            onChange={e => setSortBy(e.target.value)}
-          >
-            <option value="popularity.desc">Popularity (DESC)</option>
-            <option value="popularity.asc">Popularity (ASC)</option>
-            <option value="release_date.desc">Release Date (DESC)</option>
-            <option value="release_date.asc">Relase Date (ASC)</option>
-            <option value="revenue.desc">Revenue (DESC)</option>
-            <option value="revenue.asc">Revenue (ASC)</option>
-            <option value="vote_average.desc">Rating (DESC)</option>
-            <option value="vote_average.asc">Rating (ASC)</option>
-          </select>
+          <SortSelect setSortBy={setSortBy} />
         </header>
         <ul className="movie-genre__list search-results__list">
           {films?.results?.map(film => {
@@ -53,6 +40,11 @@ const MovieGenre = () => {
             )
           })}
         </ul>
+        {!films?.results?.length && genreName && (
+          <section className="no-results">
+            <h2>No Results found for movies under {genreName} </h2>
+          </section>
+        )}
       </div>
     </section>
   )
