@@ -40,7 +40,7 @@ const MovieGenre = () => {
             )
           })}
         </ul>
-        {!films?.results?.length && genreName && (
+        {films?.results && !films?.results?.length && genreName && (
           <section className="no-results">
             <h2>No Results found for movies under {genreName} </h2>
           </section>

@@ -27,11 +27,11 @@ const Homepage = () => {
         />
         <HomepagePopularTV
           title="Trending TV Shows"
-          swiperClass={'trending-tv-swiper'}
+          swiperClass={'tv-swiper-2'}
         />
         <HomepageList
           title="Shows From Your List"
-          swiperClass={'your-list-swiper'}
+          swiperClass={'your-list-swiper-tv'}
           type="tv"
         />
       </>

@@ -40,7 +40,7 @@ const MovieCredits = ({ id }) => {
           ) : (
             <p className="movie-credits__no-results">No results found</p>
           )}
-          {credits.length > index && (
+          {credits?.length > index && (
             <li className={`movie-credits__item`}>
               {currentCredits?.length === index && (
                 <h4

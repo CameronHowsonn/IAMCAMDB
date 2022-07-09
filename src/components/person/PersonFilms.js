@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import MobileCheck from '../../hooks/mobile-check.js'
 import LinkButton from '../Buttons/LinkButton.js'
 import { getMoviesFromPerson } from '../helpers/person.js'
+import SortSelect from '../SortSelect.js'
 
 const PersonFilms = ({ id }) => {
   const mobileCheck = MobileCheck()
@@ -46,17 +47,7 @@ const PersonFilms = ({ id }) => {
         <div className="person__films">
           <header className="person__films--header">
             <h3 className="person__films--title">Movies</h3>
-            <select
-              name="sort-by"
-              id="sort-by"
-              onChange={e => {
-                setSortBy(e.target.value)
-              }}
-            >
-              <option value="release_date">Release Date</option>
-              <option value="title">Title</option>
-              <option value="vote_average">Popularity</option>
-            </select>
+            <SortSelect setSortBy={setSortBy} type="person" />
           </header>
           {sortedMovies?.map(movie => {
             if (!isNaN(movie.release_date)) {
