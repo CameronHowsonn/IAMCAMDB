@@ -1,4 +1,7 @@
 export async function getTrendingFilms(timeframe) {
+  if (!timeframe) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/trending/movie/${timeframe}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
@@ -6,6 +9,9 @@ export async function getTrendingFilms(timeframe) {
   return data
 }
 export async function getFilmById(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
@@ -13,6 +19,9 @@ export async function getFilmById(id) {
   return data
 }
 export async function getFilmCredits(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
   )
@@ -20,6 +29,9 @@ export async function getFilmCredits(id) {
   return data
 }
 export async function getFilmImages(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`
   )
@@ -28,6 +40,9 @@ export async function getFilmImages(id) {
 }
 
 export async function getSimilarFilms(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   )
@@ -36,6 +51,9 @@ export async function getSimilarFilms(id) {
 }
 
 export async function getRecommendations(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   )
@@ -44,6 +62,9 @@ export async function getRecommendations(id) {
 }
 
 export async function getReviews(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   )
@@ -62,7 +83,9 @@ export async function getFilmGenres() {
 }
 
 export async function getFilmsByGenre(id, page, sortBy) {
-  console.log(sortBy)
+  if (!id || !page || !sortBy) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${sortBy}&with_genres=${id}&page=${page}`
   )

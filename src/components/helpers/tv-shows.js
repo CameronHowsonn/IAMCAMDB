@@ -6,6 +6,9 @@ export async function getPopularTvShows() {
   return data.results
 }
 export async function getTVShowById(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
@@ -14,6 +17,9 @@ export async function getTVShowById(id) {
 }
 
 export async function getTVShowImages(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`
   )
@@ -22,6 +28,9 @@ export async function getTVShowImages(id) {
 }
 
 export async function getTVShowCredits(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
   )
@@ -30,6 +39,9 @@ export async function getTVShowCredits(id) {
 }
 
 export async function getSimilarTvShows(id) {
+  if (!id) {
+    return false
+  }
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   )
