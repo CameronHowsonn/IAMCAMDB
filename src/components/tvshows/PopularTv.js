@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
-import { isFilmInList } from '../helpers/localStorage'
+import { isShowInList } from '../helpers/localStorage'
 import HeroSearch from '../homepage/HeroSearch'
 
 const PopularTV = ({ genres, search, trending = false, title }) => {
@@ -39,7 +39,7 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
   useEffect(() => {
     if (filmData != null) {
       setCurrentFilm(filmData[currentIndex])
-      isFilmInList(
+      isShowInList(
         filmData[currentIndex]?.id,
         filmData[currentIndex]?.title
       ).then(result => setIsInList(result))
@@ -131,6 +131,7 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
                   icon={'plus'}
                   disabled={isInList}
                   setElementIndex={setElementIndex}
+                  type="tv"
                 />
                 <LinkButton
                   link={`/tv-show/${currentFilm?.id}`}

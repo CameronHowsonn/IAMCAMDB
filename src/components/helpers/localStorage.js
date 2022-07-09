@@ -62,3 +62,9 @@ export async function removeShow(id) {
   const event = new Event('localStorageRemoveTV')
   window.dispatchEvent(event)
 }
+
+export async function isShowInList(id, name) {
+  const currentFilms = localStorage.getItem('showList')
+  const filmList = currentFilms ? JSON.parse(currentFilms) : []
+  return filmList.includes(id)
+}

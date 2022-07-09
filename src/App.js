@@ -9,6 +9,7 @@ import MovieGenre from './components/pages/MovieGenre'
 import Movies from './components/pages/Movies'
 import Person from './components/pages/Person'
 import Search from './components/pages/Search'
+import TVGenre from './components/pages/TVGenre'
 import TVShow from './components/pages/TVShow'
 import TVShows from './components/pages/TVShows'
 import { ApiContext } from './context/api'
@@ -84,6 +85,10 @@ function App() {
                       element={<MovieGenre />}
                     />
                     <Route path="/tv-shows" element={<TVShows />} />
+                    <Route
+                      path="/tv-shows/genre/:genreName/:id"
+                      element={<TVGenre />}
+                    />
                   </Routes>
                 )}
               </div>
