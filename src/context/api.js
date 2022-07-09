@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getFilmGenres } from '../components/helpers/films'
+import { getFilmList } from './../components/helpers/localStorage'
 
 const API = createContext()
 
 export function ApiContext({ children }) {
   const [config, setConfig] = useState(null)
   const [genres, setGenres] = useState(null)
+  const [filmList, setFilmList] = useState(null)
 
   useEffect(() => {
     fetch(
@@ -18,7 +20,24 @@ export function ApiContext({ children }) {
       .then(() => getFilmGenres())
       .then(data => setGenres(data))
   }, [])
-  return <API.Provider value={{ config, genres }}>{children}</API.Provider>
+
+  useEffect(() => {
+    const getFilms = async () => {
+      getFilmList().then(list => setFilmList(list))
+    }
+    getFilms()
+
+    window.addEventListener('localStorageAdd', () => getFilms())
+    window.addEventListener('localStorageRemove', () => getFilms())
+    return () => {
+      window.removeEventListener('localStorageAdd', getFilms())
+      window.removeEventListener('localStorageRemove', getFilms())
+    }
+  }, [])
+
+  return (
+    <API.Provider value={{ config, genres, filmList }}>{children}</API.Provider>
+  )
 }
 
 export function useAPI() {

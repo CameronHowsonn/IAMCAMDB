@@ -2,7 +2,7 @@ import HomepageList from '../homepage/HomepageList'
 import HomepagePopular from '../homepage/HomepagePopular'
 import MovieGenres from '../movies/MoviesGenres'
 
-const Movies = ({ genres, filmList }) => {
+const Movies = () => {
   return (
     <section className="movies">
       <HomepagePopular
@@ -11,11 +11,10 @@ const Movies = ({ genres, filmList }) => {
         title={'Trending Today'}
         type="movie"
       />
-      <MovieGenres genres={genres} />
+      <MovieGenres />
       <HomepageList
         title="Movies From Your List"
         swiperClass={'your-list-swiper'}
-        filmList={filmList}
         type="movie"
       />
     </section>

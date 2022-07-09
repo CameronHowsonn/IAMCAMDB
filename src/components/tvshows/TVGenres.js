@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useAPI } from '../../context/api'
 
-const MovieGenres = ({ genres }) => {
+const MovieGenres = () => {
+  const { genres } = useAPI()
+
   return (
     <div className="movie-genres">
       <div>

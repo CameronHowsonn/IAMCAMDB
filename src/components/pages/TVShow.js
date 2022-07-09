@@ -7,7 +7,7 @@ import TVDetail from '../tv/TVDetail'
 import TVHero from '../tv/TVHero'
 import TVImages from '../tv/TVImages'
 
-const TVShow = ({ config, filmList }) => {
+const TVShow = ({ config }) => {
   let { id } = useParams()
   const [show, setShow] = useState(null)
   const [similarShows, setSimilarShows] = useState([])
@@ -23,12 +23,11 @@ const TVShow = ({ config, filmList }) => {
       {show && <TVDetail show={show} />}
       {show && <TVCredits id={id} />}
       {show && <TVImages id={id} />}
-      {config && filmList && similarShows && (
+      {config && similarShows && (
         <HomepagePopularTV
           title="Similar TV Shows"
           timeframe={'day'}
           swiperClass={'similar-swiper'}
-          filmList={filmList}
           films={similarShows}
           type="tv"
         />

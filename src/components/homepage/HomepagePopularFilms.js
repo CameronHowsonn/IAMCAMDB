@@ -9,12 +9,12 @@ import Film from '../Film'
 import { getTrendingFilms } from '../helpers/films'
 import useOnScreen from './../../hooks/on-screen'
 
-const HomepagePopularFilms = ({ swiperClass, title, timeframe, filmList }) => {
+const HomepagePopularFilms = ({ swiperClass, title, timeframe }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState(null)
   const ref = useRef()
   const isVisible = useOnScreen(ref)
-  const { config } = useAPI()
+  const { config, filmList } = useAPI()
 
   useEffect(() => {
     if (isVisible) {
@@ -23,10 +23,6 @@ const HomepagePopularFilms = ({ swiperClass, title, timeframe, filmList }) => {
       )
     }
   }, [timeframe, isVisible])
-
-  if (!config) {
-    return
-  }
 
   return (
     <div className="homepage__popular-people" ref={ref}>
@@ -56,7 +52,6 @@ const HomepagePopularFilms = ({ swiperClass, title, timeframe, filmList }) => {
           >
             {config &&
               filmData &&
-              filmList &&
               filmData?.map((film, index) => {
                 const isInList = filmList?.includes(film.id)
                 return (

@@ -14,12 +14,12 @@ import { getFilmList, getTvShowList } from '../helpers/localStorage.js'
 import { getTVShowById } from '../helpers/tv-shows'
 import TVShow from '../TVShow'
 
-const HomepageList = ({ swiperClass, title, filmList, type, tvList }) => {
+const HomepageList = ({ swiperClass, title, type, tvList }) => {
   const mobileCheck = MobileCheck()
   const [filmData, setFilmData] = useState([])
   const ref = useRef()
   const isVisible = useOnScreen(ref)
-  const { config } = useAPI()
+  const { config, filmList } = useAPI()
 
   useEffect(() => {
     const getFilms = async () => {
@@ -93,7 +93,6 @@ const HomepageList = ({ swiperClass, title, filmList, type, tvList }) => {
               }}
             >
               {config &&
-                filmList &&
                 filmData?.length > 0 &&
                 filmData?.map((film, index) => {
                   const isInList =

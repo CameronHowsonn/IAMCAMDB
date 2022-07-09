@@ -1,4 +1,4 @@
-const MovieReview = ({ review, filmList }) => {
+const MovieReview = ({ review }) => {
   if (
     !review?.author_details?.rating ||
     !review?.author_details?.name ||

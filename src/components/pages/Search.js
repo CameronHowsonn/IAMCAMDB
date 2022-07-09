@@ -5,7 +5,7 @@ import { search } from '../helpers/search.js'
 import SearchHeader from '../Search/Search-header'
 import SearchResults from '../Search/SearchResults'
 
-const Search = ({ config, filmList }) => {
+const Search = ({ config }) => {
   let { searchTerm } = useParams()
   const [page, setPage] = useState(1)
   const [results, setResults] = useState([])
@@ -30,12 +30,8 @@ const Search = ({ config, filmList }) => {
       <div className="search-header-container" ref={header}>
         {searchTerm && <SearchHeader term={searchTerm} />}
       </div>
-      {results && totalPages && filmList && config && (
-        <SearchResults
-          results={results}
-          totalPages={totalPages}
-          filmList={filmList}
-        />
+      {results && totalPages && config && (
+        <SearchResults results={results} totalPages={totalPages} />
       )}
 
       {totalPages > 1 ? (

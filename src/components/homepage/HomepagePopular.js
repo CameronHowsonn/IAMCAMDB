@@ -7,7 +7,6 @@ import { isFilmInList } from '../helpers/localStorage'
 import HeroSearch from './HeroSearch'
 
 const HomepagePopular = ({
-  genres,
   search,
   trending = false,
   title,
@@ -23,7 +22,7 @@ const HomepagePopular = ({
   const [currentFilm, setCurrentFilm] = useState(null)
   const [isInList, setIsInList] = useState(false)
   const [elementIndex, setElementIndex] = useState(0)
-  const { config } = useAPI()
+  const { config, genres } = useAPI()
 
   useLayoutEffect(() => {
     const getData = async () => {

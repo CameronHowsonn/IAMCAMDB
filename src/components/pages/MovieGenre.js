@@ -1,13 +1,15 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useAPI } from '../../context/api'
 import Film from '../Film'
 import { getFilmsByGenre } from '../helpers/films'
 
-const MovieGenre = ({ genres, filmList }) => {
+const MovieGenre = () => {
   const { id, genreName } = useParams()
   const [films, setFilms] = useState([])
   const [sortBy, setSortBy] = useState('popularity.desc')
   const [page, setPage] = useState(1)
+  const { filmList } = useAPI()
 
   useLayoutEffect(() => {
     getFilmsByGenre(id, page, sortBy).then(data => setFilms(data))

@@ -2,10 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
 import { getFilmGenres } from './components/helpers/films'
-import {
-  getFilmList,
-  getTvShowList,
-} from './components/helpers/localStorage.js'
+import { getTvShowList } from './components/helpers/localStorage.js'
 import { FullscreenMenu } from './components/Navigation'
 import Homepage from './components/pages/Homepage'
 import Movie from './components/pages/Movie'
@@ -64,21 +61,19 @@ function App() {
     }
   }, [])
 
-  const [filmList, setFilmList] = useState(null)
   const [tvList, setTVList] = useState(null)
 
   useEffect(() => {
-    const getFilms = async () => {
-      getFilmList().then(list => setFilmList(list))
+    const getShows = async () => {
       getTvShowList().then(list => setTVList(list))
     }
-    getFilms()
+    getShows()
 
-    window.addEventListener('localStorageAdd', () => getFilms())
-    window.addEventListener('localStorageRemove', () => getFilms())
+    window.addEventListener('localStorageAdd', () => getShows())
+    window.addEventListener('localStorageRemove', () => getShows())
     return () => {
-      window.removeEventListener('localStorageAdd', getFilms())
-      window.removeEventListener('localStorageRemove', getFilms())
+      window.removeEventListener('localStorageAdd', getShows())
+      window.removeEventListener('localStorageRemove', getShows())
     }
   }, [])
 
@@ -98,40 +93,20 @@ function App() {
                     <Route
                       exact
                       path="/"
-                      element={
-                        <Homepage
-                          genres={genres}
-                          filmList={filmList}
-                          tvList={tvList}
-                        />
-                      }
+                      element={<Homepage tvList={tvList} />}
                     />
                     <Route path="/person/:id" element={<Person />} />
-                    <Route
-                      path="/search/:searchTerm"
-                      element={<Search filmList={filmList} />}
-                    />
-                    <Route
-                      path="/movie/:id"
-                      element={<Movie filmList={filmList} genres={genres} />}
-                    />
-                    <Route
-                      path="/tv-show/:id"
-                      element={<TVShow filmList={filmList} genres={genres} />}
-                    />
-                    <Route
-                      path="/movies"
-                      element={<Movies filmList={filmList} genres={genres} />}
-                    />
+                    <Route path="/search/:searchTerm" element={<Search />} />
+                    <Route path="/movie/:id" element={<Movie />} />
+                    <Route path="/tv-show/:id" element={<TVShow />} />
+                    <Route path="/movies" element={<Movies />} />
                     <Route
                       path="/movies/genre/:genreName/:id"
-                      element={
-                        <MovieGenre genres={genres} filmList={filmList} />
-                      }
+                      element={<MovieGenre />}
                     />
                     <Route
                       path="/tv-shows"
-                      element={<TVShows tvList={tvList} genres={genres} />}
+                      element={<TVShows tvList={tvList} />}
                     />
                   </Routes>
                 )}

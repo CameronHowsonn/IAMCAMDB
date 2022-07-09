@@ -1,14 +1,12 @@
 import MovieReview from './MovieReview'
 
-const MovieReviews = ({ config, reviews, filmList }) => {
+const MovieReviews = ({ config, reviews }) => {
   return (
     <section className="movie-reviews">
       <h2 className="movie-reviews__title">Reviews</h2>
       <ul className="movie-reviews__list">
         {reviews?.results?.map(review => {
-          return (
-            <MovieReview key={review.id} review={review} filmList={filmList} />
-          )
+          return <MovieReview key={review.id} review={review} />
         })}
       </ul>
       {reviews?.results?.length === 0 && (

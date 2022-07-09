@@ -2,7 +2,7 @@ import HomepageList from '../homepage/HomepageList'
 import PopularTV from '../tvshows/PopularTv'
 import TVGenres from '../tvshows/TVGenres'
 
-const TVShows = ({ genres, tvList, filmList }) => {
+const TVShows = ({ tvList, filmList }) => {
   return (
     <section className="movies">
       <PopularTV
@@ -15,10 +15,9 @@ const TVShows = ({ genres, tvList, filmList }) => {
         title="Shows From Your List"
         swiperClass={'your-list-swiper'}
         tvList={tvList}
-        filmList={[]}
         type="tv"
       />
-      <TVGenres genres={genres} />
+      <TVGenres />
     </section>
   )
 }

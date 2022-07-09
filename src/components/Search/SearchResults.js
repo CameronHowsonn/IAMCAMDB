@@ -1,6 +1,9 @@
+import { useAPI } from '../../context/api'
 import Film from './../Film'
 
-const SearchResutls = ({ results, config, filmList }) => {
+const SearchResutls = ({ results }) => {
+  const { filmList } = useAPI()
+
   return (
     <section className="search-results">
       <ul className="search-results__list">
