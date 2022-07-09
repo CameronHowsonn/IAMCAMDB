@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAPI } from '../../context/api'
+import Image from '../Image'
 import MovieStar from './MovieStars'
 
 const MovieDetail = ({ film, genres }) => {
@@ -14,10 +15,9 @@ const MovieDetail = ({ film, genres }) => {
           }`}
         >
           {film.poster_path ? (
-            <img
+            <Image
               src={`${config?.images.base_url}${config?.images?.profile_sizes[2]}${film?.poster_path}`}
               alt={`film poster for ${film?.original_title}`}
-              loading="lazy"
             />
           ) : (
             <h2>No Image Available</h2>

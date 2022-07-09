@@ -3,6 +3,7 @@ import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAPI } from '../../context/api'
 import { getTrendingPeople } from '../helpers/person'
+import Image from '../Image'
 
 const ActorsList = ({ time_frame }) => {
   const [people, setPeople] = useState([null])
@@ -29,11 +30,10 @@ const ActorsList = ({ time_frame }) => {
               <Link to={`/person/${person.id}`}>
                 <div className="objFit homepage__popular-people-person">
                   <div className="homepage__popular-people-person-image-container actors-list__item--img-container">
-                    <img
+                    <Image
                       className="homepage__popular-people-person-image"
                       src={`${config?.images.base_url}${config?.images?.profile_sizes[1]}${person?.profile_path}`}
                       alt={`${person?.name}`}
-                      loading="lazy"
                     />
                   </div>
                   {person?.name && (

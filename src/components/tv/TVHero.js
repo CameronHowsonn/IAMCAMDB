@@ -1,5 +1,6 @@
 import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
+import Image from '../Image'
 
 const TVHero = ({ id, show }) => {
   const { config, tvList } = useAPI()
@@ -8,7 +9,7 @@ const TVHero = ({ id, show }) => {
     <section className={`person-hero`}>
       <div className="person-hero__bg objFit">
         {show && show?.backdrop_path ? (
-          <img
+          <Image
             src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}/${show?.backdrop_path}`}
             alt={`film poster for ${id}`}
             loading="eager"

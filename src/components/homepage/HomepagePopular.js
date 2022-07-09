@@ -5,6 +5,7 @@ import { useAPI } from '../../context/api'
 import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import { isFilmInList } from '../helpers/localStorage'
+import Image from '../Image'
 import HeroSearch from './HeroSearch'
 
 const HomepagePopular = ({
@@ -78,11 +79,10 @@ const HomepagePopular = ({
         <div data-film={currentFilm.id} className="homepage__popular">
           <div className="homepage__popular-image__container">
             {config && currentFilm && (
-              <img
+              <Image
                 className="homepage__popular-image objFit"
                 src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[1]}${currentFilm?.backdrop_path}`}
                 alt={`${currentFilm?.title}`}
-                loading="eager"
               />
             )}
             <div className="homepage__popular-details">

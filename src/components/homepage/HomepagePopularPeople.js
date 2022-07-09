@@ -8,6 +8,7 @@ import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import useOnScreen from '../../hooks/on-screen'
 import { getListOfPeople } from '../helpers/person.js'
+import Image from '../Image'
 
 const HomepagePopularPeople = () => {
   const mobileCheck = MobileCheck()
@@ -60,11 +61,10 @@ const HomepagePopularPeople = () => {
                     <Link to={`person/${person.id}`}>
                       <div className="objFit homepage__popular-people-person">
                         <div className="homepage__popular-people-person-image-container">
-                          <img
+                          <Image
                             className="homepage__popular-people-person-image"
                             src={`${config?.images.base_url}${config?.images?.profile_sizes[1]}${person?.profile_path}`}
                             alt={`${person?.name}`}
-                            loading="lazy"
                           />
                         </div>
                         {person?.name && (

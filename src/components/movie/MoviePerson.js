@@ -1,6 +1,7 @@
 import { FaUserSlash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAPI } from '../../context/api'
+import Image from '../Image'
 
 const MoviePerson = ({ person }) => {
   const { config } = useAPI()
@@ -13,13 +14,10 @@ const MoviePerson = ({ person }) => {
     >
       <div className="movie-credits__item-image objFit">
         {person.profile_path ? (
-          <img
+          <Image
             className="movie-credits__image"
             src={`${config?.images?.base_url}${config?.images?.profile_sizes[1]}${person?.profile_path}`}
             alt={person.name}
-            loading="lazy"
-            width="100%"
-            height="100%"
           />
         ) : (
           <FaUserSlash />

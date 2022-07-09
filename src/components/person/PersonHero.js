@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAPI } from '../../context/api'
 import { getOneTaggedPhoto } from '../helpers/person'
+import Image from '../Image'
 
 const PersonHero = ({ id }) => {
   const [image, setImage] = useState(false)
@@ -14,7 +15,7 @@ const PersonHero = ({ id }) => {
     <section className={`person-hero ${image ? 'image' : 'no-image'}`}>
       <div className="person-hero__bg objFit">
         {image ? (
-          <img
+          <Image
             src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}${image?.file_path}`}
             alt={`film poster for ${id}`}
             loading="lazy"

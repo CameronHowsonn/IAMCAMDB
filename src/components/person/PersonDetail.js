@@ -1,5 +1,6 @@
 import { FaBirthdayCake } from 'react-icons/fa'
 import { useAPI } from '../../context/api'
+import Image from '../Image'
 import PersonLinks from './PersonLinks'
 
 const PersonDetail = ({ person }) => {
@@ -10,7 +11,7 @@ const PersonDetail = ({ person }) => {
       <div className="person-detail__inner">
         <div className="person-detail__image">
           {person?.profile_path ? (
-            <img
+            <Image
               src={`${config?.images?.base_url}${config?.images?.profile_sizes[3]}${person?.profile_path}`}
               alt={`film poster for ${person?.name}`}
               loading="lazy"

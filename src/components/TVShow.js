@@ -2,6 +2,7 @@ import { FaMinus, FaPlus, FaStar } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useAPI } from '../context/api.js'
 import { addShow, removeShow } from './helpers/localStorage.js'
+import Image from './Image.js'
 
 const TVShow = ({ film, isInList }) => {
   const { config } = useAPI()
@@ -12,10 +13,9 @@ const TVShow = ({ film, isInList }) => {
     <div className="objFit film__container" aria-label={film.original_title}>
       <Link to={`/tv-show/${film.id}`} className="film__link">
         <div className="film__image">
-          <img
+          <Image
             src={`${config.images.base_url}${config.images.profile_sizes[2]}${film.poster_path}`}
             alt={`${film.title}`}
-            loading="lazy"
           />
         </div>
       </Link>

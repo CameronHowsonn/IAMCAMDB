@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { useAPI } from '../../context/api'
 import MobileCheck from '../../hooks/mobile-check'
 import { getTVShowImages } from '../helpers/tv-shows'
+import Image from '../Image'
 
 const TVImages = ({ id }) => {
   const mobileCheck = MobileCheck()
@@ -42,7 +43,7 @@ const TVImages = ({ id }) => {
           >
             {images.map((image, index) => (
               <SwiperSlide key={`${index}-${image.file_path}`}>
-                <img
+                <Image
                   className="movie-images__image"
                   src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${image?.file_path}`}
                   alt={image.file_path}

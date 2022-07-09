@@ -9,6 +9,7 @@ import {
   removeFilm,
   removeShow,
 } from './helpers/localStorage.js'
+import Image from './Image.js'
 
 const Film = ({ film, isInList, type }) => {
   const ref = useRef()
@@ -25,7 +26,7 @@ const Film = ({ film, isInList, type }) => {
           <Link to={`/movie/${film.id}`} className="film__link">
             <div className="film__image">
               {film.poster_path ? (
-                <img
+                <Image
                   src={`${config?.images?.base_url}${config?.images?.profile_sizes[2]}${film?.poster_path}`}
                   alt={`${film.title}`}
                   loading="lazy"

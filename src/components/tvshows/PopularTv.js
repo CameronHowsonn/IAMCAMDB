@@ -6,6 +6,7 @@ import AddListButton from '../Buttons/AddListButton'
 import LinkButton from '../Buttons/LinkButton'
 import { isShowInList } from '../helpers/localStorage'
 import HeroSearch from '../homepage/HeroSearch'
+import Image from '../Image'
 
 const PopularTV = ({ genres, search, trending = false, title }) => {
   let url
@@ -76,7 +77,7 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
         <div data-film={currentFilm.id} className="homepage__popular">
           <div className="homepage__popular-image__container">
             {config && currentFilm && (
-              <img
+              <Image
                 className="homepage__popular-image objFit"
                 src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${currentFilm?.backdrop_path}`}
                 alt={`${currentFilm?.name}`}
