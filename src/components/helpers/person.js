@@ -3,7 +3,6 @@ export async function getPersonById(id) {
     `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
   const data = await response.json()
-  console.log(data)
   return data
 }
 
@@ -36,6 +35,13 @@ export async function getPersonLinks(id) {
     `https://api.themoviedb.org/3/person/${id}/external_ids?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   )
   const data = await response.json()
-  console.log(data)
+  return data
+}
+
+export async function getTrendingPeople(time_window) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/trending/person/${timeframe}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+  )
+  const data = await response.json()
   return data
 }

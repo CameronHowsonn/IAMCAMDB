@@ -55,9 +55,6 @@ const Film = ({ film, isInList, type }) => {
                   : isInList
                   ? removeShow(film.id)
                   : addShow(film.id)
-
-                console.log('clicked')
-                console.log(film.id)
               }}
             >
               {isInList ? <FaMinus /> : <FaPlus />}

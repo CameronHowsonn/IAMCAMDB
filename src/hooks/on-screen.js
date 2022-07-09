@@ -5,15 +5,10 @@ export default function useOnScreen(ref) {
 
   const observer = useMemo(
     () =>
-      new IntersectionObserver(
-        ([entry]) =>
-          setHasIntersected(
-            hasIntersected => hasIntersected || entry.isIntersecting
-          ),
-        {
-          rootMargin: '100px 0px 100px 0px',
-          threshold: 0,
-        }
+      new IntersectionObserver(([entry]) =>
+        setHasIntersected(
+          hasIntersected => hasIntersected || entry.isIntersecting
+        )
       ),
     []
   )

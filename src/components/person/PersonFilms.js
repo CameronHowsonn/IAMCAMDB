@@ -54,8 +54,6 @@ const PersonFilms = ({ id }) => {
               return false
             }
 
-            console.log(movie.vote_average)
-
             return (
               <div key={movie?.id} className="person__films--single">
                 <Link to={`/movie/${movie?.id}`}>

@@ -8,12 +8,10 @@ const TVCredits = ({ id }) => {
   const [index, setIndex] = useState(10)
 
   useEffect(() => {
-    getTVShowCredits(id)
-      .then(data => {
-        setCredits(data.cast)
-        return data.cast
-      })
-      .then(data => console.log(data))
+    getTVShowCredits(id).then(data => {
+      setCredits(data.cast)
+      return data.cast
+    })
   }, [id])
 
   useEffect(() => {
