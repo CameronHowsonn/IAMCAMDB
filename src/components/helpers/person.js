@@ -38,10 +38,11 @@ export async function getPersonLinks(id) {
   return data
 }
 
-export async function getTrendingPeople(time_window) {
+export async function getTrendingPeople(time_window, page) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/trending/person/${timeframe}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/trending/person/${time_window}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
   )
   const data = await response.json()
+  console.log(data)
   return data
 }

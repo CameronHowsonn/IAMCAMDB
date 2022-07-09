@@ -22,6 +22,8 @@ const HomepageList = ({ swiperClass, title, type }) => {
   const { config, filmList, tvList } = useAPI()
 
   useEffect(() => {
+    const abortController = new AbortController()
+
     const getFilms = async () => {
       getFilmList()
         .then(list => Promise.all(list.map(item => getFilmById(item))))
@@ -49,6 +51,7 @@ const HomepageList = ({ swiperClass, title, type }) => {
     }
 
     return () => {
+      abortController.abort()
       if (type === 'movie') {
         window.removeEventListener('localStorageAddFilm', getFilms())
         window.removeEventListener('localStorageRemoveFilm', getFilms())

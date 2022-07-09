@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.sass'
 import { getFilmGenres } from './components/helpers/films'
 import { FullscreenMenu } from './components/Navigation'
+import Actors from './components/pages/Actors'
 import Homepage from './components/pages/Homepage'
 import Movie from './components/pages/Movie'
 import MovieGenre from './components/pages/MovieGenre'
@@ -89,6 +90,7 @@ function App() {
                       path="/tv-shows/genre/:genreName/:id"
                       element={<TVGenre />}
                     />
+                    <Route path="/actors" element={<Actors />} />
                   </Routes>
                 )}
               </div>
