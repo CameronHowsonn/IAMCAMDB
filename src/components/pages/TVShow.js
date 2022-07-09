@@ -31,6 +31,7 @@ const TVShow = ({ config, filmList }) => {
           swiperClass={'similar-swiper'}
           filmList={filmList}
           films={similarShows}
+          type="tv"
         />
       )}
     </div>

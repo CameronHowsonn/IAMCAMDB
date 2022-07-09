@@ -1,5 +1,10 @@
 import { FaMinus, FaPlus } from 'react-icons/fa'
-import { addFilm, removeFilm } from '../helpers/localStorage.js'
+import {
+  addFilm,
+  addShow,
+  removeFilm,
+  removeShow,
+} from '../helpers/localStorage.js'
 
 const AddListButton = ({
   text = 'Add to List',
@@ -7,12 +12,17 @@ const AddListButton = ({
   id,
   disabled,
   setElementIndex,
+  type,
 }) => {
   return (
     <button
       className="add-list-button button button--add"
       onClick={() => {
-        disabled ? removeFilm(id) : addFilm(id)
+        if (type === 'movie') {
+          disabled ? removeFilm(id) : addFilm(id)
+        } else {
+          disabled ? removeShow(id) : addShow(id)
+        }
         setElementIndex(index => index + 1)
       }}
     >

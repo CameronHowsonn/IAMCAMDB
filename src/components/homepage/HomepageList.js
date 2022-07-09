@@ -133,7 +133,10 @@ const HomepageList = ({
                 <FaExclamationTriangle />
                 <h2>
                   You don't have any items in your list, head over to{' '}
-                  <Link to={'/movies'}> movies </Link>
+                  <Link to={type === 'movie' ? '/movies' : '/tv-shows'}>
+                    {' '}
+                    {type === 'movie' ? 'Movies' : 'TV Shows'}{' '}
+                  </Link>
                 </h2>
                 <p>
                   Save shows and movies to keep track of what you want to watch.

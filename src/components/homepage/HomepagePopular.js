@@ -11,6 +11,7 @@ const HomepagePopular = ({
   search,
   trending = false,
   title,
+  type = 'movie',
 }) => {
   const url = trending
     ? `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
@@ -123,6 +124,7 @@ const HomepagePopular = ({
                   icon={'plus'}
                   disabled={isInList}
                   setElementIndex={setElementIndex}
+                  type={type}
                 />
                 <LinkButton
                   link={`/movie/${currentFilm?.id}`}

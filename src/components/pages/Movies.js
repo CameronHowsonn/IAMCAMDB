@@ -10,7 +10,9 @@ const Movies = ({ config, genres, filmList }) => {
         search={false}
         trending={true}
         title={'Trending Today'}
+        type="movie"
       />
+      <MovieGenres genres={genres} />
       <HomepageList
         config={config}
         title="Movies From Your List"
@@ -18,7 +20,6 @@ const Movies = ({ config, genres, filmList }) => {
         filmList={filmList}
         type="movie"
       />
-      <MovieGenres genres={genres} />
     </section>
   )
 }

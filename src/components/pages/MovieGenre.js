@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Film from '../Film'
 import { getFilmsByGenre } from '../helpers/films'
 
-const MovieGenre = ({ config, genres }) => {
+const MovieGenre = ({ config, genres, filmList }) => {
   const { id, genreName } = useParams()
   const [films, setFilms] = useState([])
   const [sortBy, setSortBy] = useState('popularity.desc')
@@ -39,14 +39,22 @@ const MovieGenre = ({ config, genres }) => {
           </select>
         </header>
         <ul className="movie-genre__list search-results__list">
-          {films?.results?.map(film => (
-            <li
-              className="movie-genre__item search-results__list__item"
-              key={film.id}
-            >
-              <Film config={config} film={film} />
-            </li>
-          ))}
+          {films?.results?.map(film => {
+            const isInList = filmList?.includes(film.id)
+            return (
+              <li
+                className="movie-genre__item search-results__list__item"
+                key={film.id}
+              >
+                <Film
+                  config={config}
+                  film={film}
+                  type="movie"
+                  isInList={isInList}
+                />
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

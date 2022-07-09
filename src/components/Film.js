@@ -45,7 +45,7 @@ const Film = ({ film, config, isInList, type }) => {
             )}
             <div
               className="film__details--list"
-              onClick={() =>
+              onClick={() => {
                 type === 'movie'
                   ? isInList
                     ? removeFilm(film.id)
@@ -53,7 +53,10 @@ const Film = ({ film, config, isInList, type }) => {
                   : isInList
                   ? removeShow(film.id)
                   : addShow(film.id)
-              }
+
+                console.log('clicked')
+                console.log(film.id)
+              }}
             >
               {isInList ? <FaMinus /> : <FaPlus />}
             </div>
