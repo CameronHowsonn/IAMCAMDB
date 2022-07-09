@@ -81,7 +81,7 @@ const PopularTV = ({ genres, search, trending = false, title }) => {
                 className="homepage__popular-image objFit"
                 src={`${config?.images?.base_url}${config?.images?.backdrop_sizes[2]}${currentFilm?.backdrop_path}`}
                 alt={`${currentFilm?.name}`}
-                loading="eager"
+                figureClass="objFit"
               />
             )}
             <div className="homepage__popular-details">
